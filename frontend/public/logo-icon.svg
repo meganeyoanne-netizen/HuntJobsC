@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Outer Orange Wave Arc -->
+  <path
+    d="M 87.4 48 A 66 66 0 0 0 87.4 152"
+    stroke="#F58220"
+    stroke-width="17"
+    stroke-linecap="round"
+  />
+  
+  <!-- Inner Orange Wave Arc -->
+  <path
+    d="M 101.1 73.1 A 38 38 0 0 0 101.1 126.9"
+    stroke="#F58220"
+    stroke-width="15"
+    stroke-linecap="round"
+  />
+  
+  <!-- Central Orange Dot -->
+  <circle cx="128" cy="100" r="12" fill="#F58220" />
+  
+  <!-- Blue Magnifying Glass Ring -->
+  <path
+    d="M 113.8 64.8 A 38 38 0 1 1 113.8 135.2"
+    stroke="#0A4D80"
+    stroke-width="15"
+    stroke-linecap="round"
+  />
+  
+  <!-- Blue Magnifying Glass Handle -->
+  <line
+    x1="155"
+    y1="127"
+    x2="177"
+    y2="149"
+    stroke="#0A4D80"
+    stroke-width="16"
+    stroke-linecap="round"
+  />
+</svg>

@@ -1,0 +1,1174 @@
+[
+  {
+    "file": "src/App.css",
+    "lines": 185,
+    "components": [],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/App.jsx",
+    "lines": 130,
+    "components": [
+      "App"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/components/common/AIResult.jsx",
+    "lines": 11,
+    "components": [
+      "AIResult"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/components/common/ApiFeedback.jsx",
+    "lines": 10,
+    "components": [
+      "ApiFeedback",
+      "LoadingPanel"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 1,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/components/common/CVOnlineEditor.jsx",
+    "lines": 8,
+    "components": [
+      "CVOnlineEditor"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/components/common/InterviewActions.jsx",
+    "lines": 8,
+    "components": [
+      "InterviewActions"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/components/common/Logo.jsx",
+    "lines": 22,
+    "components": [
+      "Logo"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/components/common/MessagesPanel.jsx",
+    "lines": 11,
+    "components": [
+      "MessagesPanel"
+    ],
+    "resources": [
+      "\"/candidatures/\",v=>v)",
+      "\"/messages/\",v=>v)"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/components/common/ResourceBoundary.jsx",
+    "lines": 11,
+    "components": [
+      "ResourceBoundary"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/components/layout/AppShell.jsx",
+    "lines": 20,
+    "components": [
+      "AppShell"
+    ],
+    "resources": [],
+    "asides": 2,
+    "headers": 1,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/components/ui/index.jsx",
+    "lines": 54,
+    "components": [
+      "Button",
+      "Form",
+      "Card",
+      "Badge",
+      "Avatar",
+      "EmptyState",
+      "Skeleton",
+      "PageSkeleton",
+      "ErrorState",
+      "ModalFrame",
+      "IconButton",
+      "Input",
+      "Textarea",
+      "Select",
+      "StatCard",
+      "Tabs"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": []
+  },
+  {
+    "file": "src/design-system.css",
+    "lines": 24,
+    "components": [],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/hooks/useResource.js",
+    "lines": 19,
+    "components": [],
+    "resources": [
+      "path, mapper = identity, initial = []) {"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/index.css",
+    "lines": 430,
+    "components": [],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/layouts/CandidatLayout.jsx",
+    "lines": 5,
+    "components": [
+      "CandidatLayout"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/main.jsx",
+    "lines": 11,
+    "components": [],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/pages/admin/AdminCandidateDetailPage.jsx",
+    "lines": 1376,
+    "components": [
+      "AdminCandidateDetailPage",
+      "TabButton",
+      "InfoCard",
+      "InfoItem",
+      "EmptyState",
+      "Modal"
+    ],
+    "resources": [
+      "\"/administration/users/\"+activeCandidateId+\"/\",adminUser,adminUser({id:activeCandidateId,first_name:"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 2,
+    "timers": 1,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminDashboardPage.jsx",
+    "lines": 728,
+    "components": [
+      "DashboardSkeleton",
+      "StatCard",
+      "ActivityChart",
+      "OffersModeration",
+      "PendingRecruiters",
+      "RecentActivities",
+      "AlertsCard",
+      "QuickActions",
+      "AdminDashboardPage"
+    ],
+    "resources": [
+      "\"/administration/statistics/\",d=>d.weekly_activity)",
+      "\"/offres/admin/pending/\",jobsAdapter)",
+      "\"/administration/entreprises/\",list=>list.filter(c=>c.verification_status===\"PENDING\").map(c=>({...c",
+      "\"/administration/statistics/\",d=>d.recent)",
+      "\"/offres/admin/pending/\",v=>v)",
+      "\"/administration/entreprises/\",v=>v.filter(c=>c.verification_status===\"PENDING\"))",
+      "\"/administration/statistics/\",v=>v,{})"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "text-[#071A36]",
+      "bg-[#071A36]",
+      "bg-[#f5f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminNotificationsPage.jsx",
+    "lines": 835,
+    "components": [
+      "AdminNotificationsPage",
+      "HeroStat",
+      "FilterButton",
+      "EmptyState"
+    ],
+    "resources": [
+      "\"/notifications/\",list=>notificationsAdapter(list).map(n=>({...n,isRead:n.is_read,category:n.destina"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 1,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminOfferDetailPage.jsx",
+    "lines": 1534,
+    "components": [
+      "AdminOfferDetailPage",
+      "TabButton",
+      "InfoCard",
+      "InfoItem",
+      "Modal"
+    ],
+    "resources": [
+      "\"/offres/\"+activeOfferId+\"/\",adminOffer,adminOffer({id:activeOfferId,first_name:\"\",last_name:\"\",prof"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 2,
+    "timers": 1,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminOffersPage.jsx",
+    "lines": 1403,
+    "components": [
+      "OfferSkeleton",
+      "StatusBadge",
+      "ActionMenu",
+      "OfferDetailsModal",
+      "DetailBox",
+      "ConfirmationModal",
+      "OfferRow",
+      "OfferMobileCard",
+      "AdminOffersPage",
+      "SelectField"
+    ],
+    "resources": [
+      "\"/offres/admin/all/\",list=>list.map(j=>({...jobAdapter(j),status:j.statut===\"EN_ATTENTE\"?\"En attente"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 3,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#071A36]",
+      "text-[#071A36]",
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminRecruiterDetailPage.jsx",
+    "lines": 1535,
+    "components": [
+      "AdminRecruiterDetailPage",
+      "TabButton",
+      "InfoCard",
+      "InfoItem",
+      "ProtectedInfo",
+      "OfferStatus",
+      "Modal"
+    ],
+    "resources": [
+      "\"/administration/entreprises/\"+activeRecruiterId+\"/\",adminCompany,adminCompany({id:activeRecruiterId"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 2,
+    "timers": 1,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminRecruitersPage.jsx",
+    "lines": 1207,
+    "components": [
+      "RecruiterSkeleton",
+      "StatusBadge",
+      "ActionMenu",
+      "RecruiterDetailsModal",
+      "InfoBlock",
+      "MetricBox",
+      "ConfirmationModal",
+      "RecruiterRow",
+      "RecruiterMobileCard",
+      "AdminRecruitersPage"
+    ],
+    "resources": [
+      "\"/administration/entreprises/\",list=>list.map(companyAdapter))"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 3,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#071A36]",
+      "text-[#071A36]",
+      "text-[#071a36]",
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminSettingsPage.jsx",
+    "lines": 960,
+    "components": [
+      "AdminSettingsPage",
+      "GeneralSettings",
+      "ModerationSettings",
+      "NotificationSettings",
+      "AISettings",
+      "SecuritySettings",
+      "MaintenanceSettings",
+      "SettingsPanel",
+      "InputField",
+      "ToggleSetting",
+      "ActionCard"
+    ],
+    "resources": [
+      "\"/administration/settings/\",v=>v,null)"
+    ],
+    "asides": 1,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminStatisticsPage.jsx",
+    "lines": 1057,
+    "components": [
+      "AdminStatisticsPage",
+      "HeroMiniCard",
+      "ActivityRow",
+      "RecentActivityCard"
+    ],
+    "resources": [
+      "\"/administration/statistics/\",d=>({users:d.utilisateurs,candidates:d.candidats,recruiters:d.recruteu",
+      "\"/administration/statistics/\",d=>d.monthly)[0]",
+      "\"/administration/statistics/\",d=>d.activity)[0]",
+      "\"/administration/statistics/\",d=>d.top_jobs)[0]"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminUserDetailPage.jsx",
+    "lines": 1184,
+    "components": [
+      "AdminUserDetailPage",
+      "TabButton",
+      "InfoCard",
+      "InfoItem",
+      "Modal"
+    ],
+    "resources": [
+      "\"/administration/users/\"+activeUserId+\"/\",adminUser,adminUser({id:activeUserId,first_name:\"\",last_na"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 2,
+    "timers": 1,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminUsersPage.jsx",
+    "lines": 1283,
+    "components": [
+      "BarChartIcon",
+      "FilterSelect",
+      "RoleBadge",
+      "StatusBadge",
+      "UserDetailsModal",
+      "ConfirmationModal",
+      "UserRow",
+      "UserMobileCard",
+      "ActionMenu",
+      "UsersSkeleton",
+      "AdminUsersPage"
+    ],
+    "resources": [
+      "\"/administration/users/\",list=>list.map(u=>({...userAdapter(u),role:userAdapter(u).roleLabel})))"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 3,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#071A36]",
+      "text-[#071A36]",
+      "bg-[#f5f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/auth/ForgotPasswordPage.jsx",
+    "lines": 406,
+    "components": [
+      "ForgotPasswordPage",
+      "Feature"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/pages/auth/LoginPage.jsx",
+    "lines": 366,
+    "components": [
+      "LoginPage",
+      "GoogleIcon",
+      "LinkedInIcon"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": [
+      "bg-[#0D1B3E]",
+      "text-[#2563EB]",
+      "bg-[#2563EB]",
+      "text-[#071A36]",
+      "text-[#0A66C2]"
+    ]
+  },
+  {
+    "file": "src/pages/auth/RegisterPage.jsx",
+    "lines": 1073,
+    "components": [
+      "RegisterPage",
+      "Feature",
+      "RoleCard",
+      "Section",
+      "Input",
+      "PasswordInput",
+      "PasswordRule"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/pages/auth/ResetPasswordPage.jsx",
+    "lines": 17,
+    "components": [
+      "ResetPasswordPage"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/pages/candidat/CandidateAIPage.jsx",
+    "lines": 1093,
+    "components": [
+      "CandidateAIPage",
+      "AIToolCard",
+      "OfferImportModal",
+      "CVAdvisorModal",
+      "ModalShell",
+      "ModalModeButton",
+      "HistoryItem"
+    ],
+    "resources": [
+      "\"/users/cvs/\",cvsAdapter)[0]"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": [
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateAlertsPage.jsx",
+    "lines": 1413,
+    "components": [
+      "CandidateAlertsPage",
+      "AlertStat",
+      "AlertCard",
+      "InfoItem",
+      "FormField"
+    ],
+    "resources": [
+      "\"/alertes/\",list=>list.map(a=>({...a,name:a.title,keywords:a.keyword,contracts:a.contracts?.length?a"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 2,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateApplicationsPage.jsx",
+    "lines": 1077,
+    "components": [
+      "CandidateApplicationsPage",
+      "ApplicationStat",
+      "ApplicationCard",
+      "ApplicationDetailModal",
+      "DetailInfo",
+      "EmptyState"
+    ],
+    "resources": [
+      "\"/candidatures/\",applicationsAdapter)[0]",
+      "\"/candidatures/\")"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateCVPage.jsx",
+    "lines": 902,
+    "components": [
+      "CandidateCVPage",
+      "CVCard",
+      "CVAction",
+      "CVStat",
+      "EmptyCV"
+    ],
+    "resources": [
+      "\"/users/cvs/\",cvsAdapter)"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 2,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateDashboardPage.jsx",
+    "lines": 846,
+    "components": [
+      "CandidateDashboardPage",
+      "SectionHeader",
+      "ApplicationRow",
+      "ProfileTask"
+    ],
+    "resources": [
+      "\"/dashboard/\",v=>v,{})",
+      "\"/offres/\",jobsAdapter)[0]",
+      "\"/candidatures/\",applicationsAdapter)[0]"
+    ],
+    "asides": 1,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": [
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateDocumentsPage.jsx",
+    "lines": 925,
+    "components": [
+      "CandidateDocumentsPage",
+      "DocumentStat",
+      "SectionHeader",
+      "DocumentGeneratorCard",
+      "DocumentRow",
+      "EmptyDocuments",
+      "DocumentGeneratorModal"
+    ],
+    "resources": [
+      "\"/generations/\",generationsAdapter)"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateJobDetailPage.jsx",
+    "lines": 644,
+    "components": [
+      "CandidateJobDetailPage",
+      "QuickInfo",
+      "DetailSection",
+      "ListItem",
+      "CompanyInfo"
+    ],
+    "resources": [
+      "\"/offres/\"+jobId+\"/\",jobAdapter,null)[0]",
+      "\"/users/cvs/\",cvsAdapter)"
+    ],
+    "asides": 1,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 1,
+    "hasEmpty": false,
+    "classes": [
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateJobsPage.jsx",
+    "lines": 1047,
+    "components": [
+      "CandidateJobsPage",
+      "FilterField"
+    ],
+    "resources": [
+      "\"/favoris/\")",
+      "\"/offres/\", jobsAdapter)[0]"
+    ],
+    "asides": 1,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateProfilePage.jsx",
+    "lines": 2346,
+    "components": [
+      "CandidateProfilePage",
+      "ProfileSection",
+      "FormField",
+      "PreferenceGroup",
+      "PreferenceButton",
+      "EmptyState",
+      "ModalOverlay"
+    ],
+    "resources": [
+      "\"/users/candidate/profile/\",v=>v,null)",
+      "\"/preferences/\",v=>v,null)"
+    ],
+    "asides": 1,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f6f8fc]"
+    ]
+  },
+  {
+    "file": "src/pages/NotificationsPage.jsx",
+    "lines": 13,
+    "components": [
+      "NotificationsPage"
+    ],
+    "resources": [
+      "\"/notifications/\",notificationsAdapter)",
+      "\"/entretiens/\",v=>v)"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": []
+  },
+  {
+    "file": "src/pages/public/LandingPage.jsx",
+    "lines": 1552,
+    "components": [
+      "LandingPage",
+      "FeatureCard"
+    ],
+    "resources": [],
+    "asides": 0,
+    "headers": 1,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": [
+      "bg-[#061a41]",
+      "bg-[#071b41]"
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterApplicationsPage.jsx",
+    "lines": 1840,
+    "components": [
+      "RecruiterApplicationsPage",
+      "JobSelectorCard",
+      "ApplicationKpi",
+      "ApplicationCard",
+      "ApplicationModal",
+      "InfoRow",
+      "EmptyApplications"
+    ],
+    "resources": [
+      "\"/offres/recruteur/mes-offres/\", jobsAdapter)[0]",
+      "\"/candidatures/\",applicationsAdapter)"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f4f7fc]",
+      "bg-[#06152b]"
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterCandidateProfilePage.jsx",
+    "lines": 1670,
+    "components": [
+      "RecruiterCandidateProfilePage",
+      "ProfileSection",
+      "ContactItem",
+      "StageBadgeLarge",
+      "ModalOverlay",
+      "LayoutDashboardIcon"
+    ],
+    "resources": [
+      "\"/candidats/\"+candidateId+\"/\",c=>{const v=candidateAdapter(c)"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterCompanyPage.jsx",
+    "lines": 1142,
+    "components": [
+      "RecruiterCompanyPage",
+      "StatusCard",
+      "FormField",
+      "VerificationStep"
+    ],
+    "resources": [
+      "\"/users/recruiter/company/\",v=>v,null)"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterCVthequePage.jsx",
+    "lines": 1301,
+    "components": [
+      "RecruiterCVthequePage",
+      "CVStat",
+      "FilterSelect",
+      "CandidateCard",
+      "CandidateModal",
+      "InfoBox"
+    ],
+    "resources": [
+      "\"/candidats/\", candidatesAdapter)[0]"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterDashboardPage.jsx",
+    "lines": 1089,
+    "components": [
+      "RecruiterDashboardPage",
+      "RecruitmentJobCard",
+      "StageBadge"
+    ],
+    "resources": [
+      "\"/dashboard/\",d=>({jobs:d.offres_actives,applications:d.candidatures,profiles:d.candidatures,intervi",
+      "\"/offres/recruteur/mes-offres/\",jobsAdapter)[0]",
+      "\"/candidatures/\",applicationsAdapter)[0]",
+      "\"/entretiens/\",interviewsAdapter)[0]"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterInterviewsPage.jsx",
+    "lines": 1463,
+    "components": [
+      "RecruiterInterviewsPage",
+      "TabButton",
+      "InterviewCard",
+      "InfoMini",
+      "GeneratedQuestionCard",
+      "QuestionSkeleton",
+      "EmptyState"
+    ],
+    "resources": [
+      "\"/candidatures/\",applicationsAdapter)",
+      "\"/entretiens/\",interviewsAdapter)"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 2,
+    "timers": 1,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f5f8fc]",
+      "text-[#071A36]",
+      "bg-[#031126]"
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterJobsPage.jsx",
+    "lines": 2003,
+    "components": [
+      "RecruiterJobsPage",
+      "JobCard",
+      "JobStatus",
+      "FilterButton",
+      "JobModal",
+      "FormSectionTitle",
+      "FormField"
+    ],
+    "resources": [
+      "\"/offres/recruteur/mes-offres/\",jobsAdapter)"
+    ],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 1,
+    "timers": 0,
+    "hasEmpty": true,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterSettingsPage.jsx",
+    "lines": 1260,
+    "components": [
+      "RecruiterSettingsPage",
+      "AccountSection",
+      "SecuritySection",
+      "NotificationsSection",
+      "PreferencesSection",
+      "PrivacySection",
+      "SettingsCard",
+      "InputField",
+      "ToggleRow",
+      "InfoBanner",
+      "SaveButton"
+    ],
+    "resources": [
+      "\"/preferences/\",v=>v,null)"
+    ],
+    "asides": 1,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": [
+      "bg-[#f4f7fc]"
+    ]
+  },
+  {
+    "file": "src/services/adapters.js",
+    "lines": 38,
+    "components": [],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/services/adminAdapters.js",
+    "lines": 16,
+    "components": [],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 0,
+    "hasEmpty": false,
+    "classes": []
+  },
+  {
+    "file": "src/services/api.js",
+    "lines": 71,
+    "components": [],
+    "resources": [],
+    "asides": 0,
+    "headers": 0,
+    "mobileNav": 0,
+    "smallText": 0,
+    "modals": 0,
+    "timers": 1,
+    "hasEmpty": false,
+    "classes": []
+  }
+]

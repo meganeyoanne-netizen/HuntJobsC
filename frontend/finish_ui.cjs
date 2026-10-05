@@ -1,0 +1,7 @@
+const fs=require("fs");
+let p="src/components/layout/AppShell.jsx",s=fs.readFileSync(p,"utf8");s='import ResourceBoundary from "../common/ResourceBoundary";\n'+s;s=s.replace('{children}</div><nav','<ResourceBoundary key={activePage}>{children}</ResourceBoundary></div><nav');s=s.replace(',Search }',' }');fs.writeFileSync(p,s);
+p="src/services/api.js";s=fs.readFileSync(p,"utf8");s=s.replace('const blob = await api("/fichiers/" + kind + "/" + id + "/", { blob: true });\n  downloadBlob(blob, name || "document");','let path = kind.startsWith("/") ? kind : "/fichiers/" + kind + "/" + id + "/";\n  if (path.startsWith("/api/")) path = path.slice(4);\n  const blob = await api(path, { blob: true });\n  downloadBlob(blob, name || (kind.startsWith("/") ? id : null) || "document");');fs.writeFileSync(p,s);
+fs.appendFileSync("src/design-system.css",`
+.ui-toasts{position:fixed;bottom:24px;right:24px;z-index:200;display:grid;gap:12px;width:min(420px,calc(100vw - 32px))}.ui-toast{display:flex;align-items:flex-start;gap:12px;padding:16px;background:white;border:1px solid #bbf7d0;border-radius:16px;box-shadow:0 12px 40px #071a361f;color:#047857;animation:ui-enter .2s ease}.ui-toast.is-error{border-color:#fecaca;color:#b91c1c}.ui-toast p{flex:1;font-size:14px;white-space:pre-line;line-height:1.5}.ui-toast button{min-height:24px;min-width:24px}.ui-toast>span{padding-top:2px}@media(max-width:1023px){.ui-toasts{bottom:90px;right:16px}}
+`);
+console.log("Shell, toast and downloads updated");

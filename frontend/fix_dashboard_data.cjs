@@ -1,0 +1,13 @@
+const fs=require("fs");
+let p="src/pages/admin/AdminDashboardPage.jsx",s=fs.readFileSync(p,"utf8");
+s=s.replace('357</p>','{activityData.reduce((sum,item)=>sum+item.value,0)}</p>').replace('12 offres nécessitent votre attention','{moderationOffers.length} offres nécessitent votre attention').replace('6 demandes en attente','{recruitersPending.length} demandes en attente');
+s=s.replace('function AlertsCard({ onNavigate }) {','function AlertsCard({ onNavigate }) {\n const [pendingOffers]=useResource("/offres/admin/pending/",v=>v);\n const [pendingCompanies]=useResource("/administration/entreprises/",v=>v.filter(c=>c.verification_status==="PENDING"));');
+s=s.replace('4 alertes','{pendingOffers.length + pendingCompanies.length} actions en attente').replace('12 offres à modérer','{pendingOffers.length} offres à modérer').replace('6 recruteurs à valider','{pendingCompanies.length} recruteurs à valider');
+s=s.replace('Plusieurs éléments nécessitent une intervention administrative\n          afin de maintenir la qualité de HuntJobs.','Retrouvez les publications et les demandes de vérification à examiner.');
+s=s.replace('import { Button }','import { StatCard as SharedStatCard, EmptyState, Button }');
+const start=s.indexOf("function StatCard("),end=s.indexOf("/* =========================================================\n   ACTIVITY CHART",start);
+s=s.slice(0,start)+'function StatCard({stat,onNavigate}){return <SharedStatCard {...stat} tone={stat.color} onClick={()=>onNavigate?.(stat.route)}/>;}\n\n'+s.slice(end);
+s=s.replace('<div className="divide-y divide-slate-100">\n        {moderationOffers.map','<div className="divide-y divide-slate-100">\n        {!moderationOffers.length && <EmptyState title="Modération à jour" description="Aucune offre en attente de validation."/>}\n        {moderationOffers.map').replace('<div className="divide-y divide-slate-100">\n        {recruitersPending.map','<div className="divide-y divide-slate-100">\n        {!recruitersPending.length && <EmptyState title="Aucune demande en attente" description="Les nouvelles demandes de vérification apparaîtront ici."/>}\n        {recruitersPending.map');
+fs.writeFileSync(p,s);
+fs.appendFileSync("src/design-system.css",'\n.shell-content .flex>.flex-1{min-width:0}@media(max-width:430px){.shell-content .flex.h-56{gap:6px}.shell-content .flex.h-56>div>span{font-size:10px;letter-spacing:0}.shell-content .flex.h-56>div{min-width:0}}\n');
+console.log("Admin dashboard reflects API data and handles empty queues");

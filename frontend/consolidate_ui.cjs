@@ -1,0 +1,16 @@
+const fs=require("fs"),parser=require("./.ui-tools/node_modules/@babel/parser"),traverse=require("./.ui-tools/node_modules/@babel/traverse").default;
+for(const file of JSON.parse(fs.readFileSync("ui-modified.json","utf8"))){if(!/pages[\\/](admin|candidat|recruteur)/.test(file))continue;let s=fs.readFileSync(file,"utf8"),edits=[],imports=new Set();traverse(parser.parse(s,{sourceType:"module",plugins:["jsx"]}),{FunctionDeclaration(p){const name=p.node.id.name;if((name==="StatCard"&&!s.slice(p.node.start,p.node.body.start).includes("{ stat,"))||name==="KpiCard"){edits.push([p.node.start,p.node.end,""]);imports.add(name==="KpiCard"?"StatCard as KpiCard":"StatCard");}},
+JSXElement(p){const n=p.node;if(n.openingElement.name.name!=="div")return;const cls=n.openingElement.attributes.find(a=>a.name?.name==="className");if(!cls||!/fixed inset-0|fixed inset-x-0/.test(s.slice(cls.start,cls.end)))return;const fn=p.findParent(x=>x.isFunctionDeclaration());if(!/Modal/.test(fn?.node.id?.name||""))return;const close=fn.node.params[0]?.properties?.some(prop=>prop.key?.name==="onClose");if(!close)return;imports.add("ModalFrame");edits.push([n.openingElement.name.start,n.openingElement.name.end,"ModalFrame"],[n.openingElement.name.end,n.openingElement.name.end," onClose={onClose}"]);if(n.closingElement)edits.push([n.closingElement.name.start,n.closingElement.name.end,"ModalFrame"]);}});
+edits.sort((a,b)=>b[0]-a[0]);for(const[a,b,v]of edits)s=s.slice(0,a)+v+s.slice(b);
+if(imports.size)s='import { '+[...imports].join(", ")+' } from "../../components/ui";\n'+s;
+fs.writeFileSync(file,s);}
+let p="src/components/ui/index.jsx",s=fs.readFileSync(p,"utf8");const start=s.indexOf("export function StatCard("),end=s.indexOf("export function Tabs(",start);
+s=s.slice(0,start)+`export function StatCard({label,title,value,icon:Icon,description,detail,helper,tone,color,onClick,gradient,iconClass}){
+ const intent=tone||color||(gradient?.includes("violet")?"violet":gradient?.includes("emerald")?"emerald":"blue");
+ const icon=React.isValidElement(Icon)?Icon:Icon?React.createElement(Icon,{size:22,"aria-hidden":true}):null;
+ const content=<><div className={"ui-stat-icon ui-tone-"+(intent==="orange"?"amber":intent)}>{icon}</div><p>{label||title}</p><strong>{value}</strong>{(description||detail||helper)&&<small>{description||detail||helper}</small>}</>;
+ return onClick?<Button onClick={onClick} className="ui-card ui-stat ui-stat-action">{content}</Button>:<Card className="ui-stat">{content}</Card>;
+}
+`+s.slice(end);s=s.replace('Inbox, X, AlertCircle','Inbox, AlertCircle');fs.writeFileSync(p,s);
+fs.appendFileSync("src/design-system.css",'\n.ui-stat{position:relative;min-width:0;min-height:168px;text-align:left}.ui-stat-action{display:block;width:100%;transition:box-shadow .18s,border-color .18s}.ui-stat-action:hover{border-color:#bfdbfe;box-shadow:0 6px 24px #2563eb12}.ui-stat small{display:block;font-size:12px;line-height:1.5;margin-top:6px}.ui-stat p{font-size:13px}.ui-stat strong{font-size:32px;line-height:1.25;margin-top:4px}@media(max-width:430px){.ui-stat{padding:16px;min-height:158px}.ui-stat-icon{padding:10px;margin-bottom:10px}.ui-stat strong{font-size:28px}}\n');
+console.log("Shared statistics and modal frames adopted");

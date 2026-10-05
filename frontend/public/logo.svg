@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 220" fill="none">
+  <!-- Outer Orange Arc -->
+  <path
+    d="M 98 38 A 66 66 0 0 0 98 142"
+    stroke="#F58220"
+    stroke-width="17"
+    stroke-linecap="round"
+  />
+  
+  <!-- Inner Orange Arc -->
+  <path
+    d="M 109 64 A 38 38 0 0 0 109 116"
+    stroke="#F58220"
+    stroke-width="15"
+    stroke-linecap="round"
+  />
+  
+  <!-- Center Orange Dot -->
+  <circle cx="136" cy="90" r="12" fill="#F58220" />
+  
+  <!-- Blue Magnifying Glass Ring -->
+  <path
+    d="M 122 55 A 38 38 0 1 1 122 125"
+    stroke="#0A4D80"
+    stroke-width="15"
+    stroke-linecap="round"
+  />
+  
+  <!-- Blue Magnifying Glass Handle -->
+  <line
+    x1="163"
+    y1="117"
+    x2="185"
+    y2="139"
+    stroke="#0A4D80"
+    stroke-width="16"
+    stroke-linecap="round"
+  />
+  
+  <!-- Text JobConnect -->
+  <text
+    x="130"
+    y="188"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, 'Inter', 'Segoe UI', Roboto, sans-serif"
+    font-size="28"
+    font-weight="800"
+    letter-spacing="-0.5"
+    fill="#0B0F19"
+  >Job<tspan fill="#2563EB">Connect</tspan></text>
+</svg>

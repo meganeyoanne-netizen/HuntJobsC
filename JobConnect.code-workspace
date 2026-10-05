@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "name": "JobConnect",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "window.title": "JobConnect"
+  }
+}

@@ -1,0 +1,1312 @@
+[
+  {
+    "file": "src/pages/admin/AdminCandidateDetailPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 244,
+        "class": "{`admin-sidebar fixed inset-y-0 left-0 z-[70] flex w-[270px] flex-col bg-[#071a36] text-white transition-transform duration-300 lg",
+        "function": "AdminCandidateDetailPage"
+      },
+      {
+        "name": "nav",
+        "line": 287,
+        "class": "space-y-1",
+        "function": "AdminCandidateDetailPage"
+      },
+      {
+        "name": "div",
+        "line": 332,
+        "class": "lg:pl-[270px]",
+        "function": "AdminCandidateDetailPage"
+      },
+      {
+        "name": "header",
+        "line": 335,
+        "class": "admin-navbar sticky top-0 z-40 h-[76px] border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "AdminCandidateDetailPage"
+      },
+      {
+        "name": "main",
+        "line": 371,
+        "class": "px-4 pb-10 pt-6 sm:px-7 lg:px-9",
+        "function": "AdminCandidateDetailPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminDashboardPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 155,
+        "class": "admin-sidebar fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "AdminSidebar"
+      },
+      {
+        "name": "nav",
+        "line": 204,
+        "class": "space-y-1.5",
+        "function": "AdminSidebar"
+      },
+      {
+        "name": "nav",
+        "line": 245,
+        "class": "space-y-1.5",
+        "function": "AdminSidebar"
+      },
+      {
+        "name": "header",
+        "line": 330,
+        "class": "admin-navbar sticky top-0 z-40 hidden h-[76px] items-center justify-between border-b border-slate-200/80 bg-white/90 px-6 backdrop",
+        "function": "AdminNavbar"
+      },
+      {
+        "name": "AdminSidebar",
+        "line": 970,
+        "class": "",
+        "function": "AdminDashboardPage"
+      },
+      {
+        "name": "main",
+        "line": 976,
+        "class": "min-h-screen lg:pl-[270px]",
+        "function": "AdminDashboardPage"
+      },
+      {
+        "name": "AdminNavbar",
+        "line": 977,
+        "class": "",
+        "function": "AdminDashboardPage"
+      },
+      {
+        "name": "AdminSidebar",
+        "line": 989,
+        "class": "",
+        "function": "AdminDashboardPage"
+      },
+      {
+        "name": "main",
+        "line": 995,
+        "class": "min-h-screen pb-24 lg:pl-[270px] lg:pb-0",
+        "function": "AdminDashboardPage"
+      },
+      {
+        "name": "AdminNavbar",
+        "line": 996,
+        "class": "",
+        "function": "AdminDashboardPage"
+      },
+      {
+        "name": "div",
+        "line": 1119,
+        "class": "fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white/95 px-2 py-2 backdrop-blur-xl lg:hidden",
+        "function": "AdminDashboardPage"
+      },
+      {
+        "name": "AdminSidebar",
+        "line": 1120,
+        "class": "",
+        "function": "AdminDashboardPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminNotificationsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 238,
+        "class": "{`admin-sidebar fixed inset-y-0 left-0 z-[70] flex w-[270px] flex-col bg-[#071a36] text-white transition-transform duration-300 lg",
+        "function": "AdminNotificationsPage"
+      },
+      {
+        "name": "nav",
+        "line": 281,
+        "class": "space-y-1",
+        "function": "AdminNotificationsPage"
+      },
+      {
+        "name": "div",
+        "line": 343,
+        "class": "lg:pl-[270px]",
+        "function": "AdminNotificationsPage"
+      },
+      {
+        "name": "header",
+        "line": 346,
+        "class": "admin-navbar sticky top-0 z-40 h-[76px] border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "AdminNotificationsPage"
+      },
+      {
+        "name": "main",
+        "line": 395,
+        "class": "px-4 pb-10 pt-6 sm:px-7 lg:px-9",
+        "function": "AdminNotificationsPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminOfferDetailPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 248,
+        "class": "{`admin-sidebar fixed inset-y-0 left-0 z-[70] flex w-[270px] flex-col bg-[#071a36] text-white transition-transform duration-300 lg",
+        "function": "AdminOfferDetailPage"
+      },
+      {
+        "name": "nav",
+        "line": 311,
+        "class": "space-y-1",
+        "function": "AdminOfferDetailPage"
+      },
+      {
+        "name": "div",
+        "line": 364,
+        "class": "lg:pl-[270px]",
+        "function": "AdminOfferDetailPage"
+      },
+      {
+        "name": "header",
+        "line": 365,
+        "class": "admin-navbar sticky top-0 z-40 h-[76px] border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "AdminOfferDetailPage"
+      },
+      {
+        "name": "main",
+        "line": 401,
+        "class": "px-4 pb-10 pt-6 sm:px-7 lg:px-9",
+        "function": "AdminOfferDetailPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminOffersPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 121,
+        "class": "admin-sidebar hidden lg:flex fixed left-0 top-0 bottom-0 z-40 w-[270px] flex-col overflow-hidden bg-[#071a36] text-white shadow-2x",
+        "function": "AdminSidebar"
+      },
+      {
+        "name": "nav",
+        "line": 164,
+        "class": "flex-1 overflow-y-auto px-4 py-6",
+        "function": "AdminSidebar"
+      },
+      {
+        "name": "header",
+        "line": 281,
+        "class": "admin-navbar sticky top-0 z-30 flex h-[76px] items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 backdrop-b",
+        "function": "AdminNavbar"
+      },
+      {
+        "name": "nav",
+        "line": 379,
+        "class": "fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 px-2 py-2 shadow-[0_-8px_30px_rgba(7,26,54,0.08)] backdro",
+        "function": "AdminMobileNav"
+      },
+      {
+        "name": "AdminSidebar",
+        "line": 1323,
+        "class": "",
+        "function": "AdminOffersPage"
+      },
+      {
+        "name": "AdminNavbar",
+        "line": 1330,
+        "class": "",
+        "function": "AdminOffersPage"
+      },
+      {
+        "name": "main",
+        "line": 1336,
+        "class": "lg:ml-[270px]",
+        "function": "AdminOffersPage"
+      },
+      {
+        "name": "AdminMobileNav",
+        "line": 1689,
+        "class": "",
+        "function": "AdminOffersPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminRecruiterDetailPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 211,
+        "class": "{`admin-sidebar fixed inset-y-0 left-0 z-[70] flex w-[270px] flex-col bg-[#071a36] text-white transition-transform duration-300 lg",
+        "function": "AdminRecruiterDetailPage"
+      },
+      {
+        "name": "nav",
+        "line": 276,
+        "class": "space-y-1",
+        "function": "AdminRecruiterDetailPage"
+      },
+      {
+        "name": "div",
+        "line": 331,
+        "class": "lg:pl-[270px]",
+        "function": "AdminRecruiterDetailPage"
+      },
+      {
+        "name": "header",
+        "line": 334,
+        "class": "admin-navbar sticky top-0 z-40 h-[76px] border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "AdminRecruiterDetailPage"
+      },
+      {
+        "name": "main",
+        "line": 374,
+        "class": "px-4 pb-10 pt-6 sm:px-7 lg:px-9",
+        "function": "AdminRecruiterDetailPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminRecruitersPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 114,
+        "class": "admin-sidebar hidden lg:flex fixed left-0 top-0 bottom-0 z-40 w-[270px] flex-col overflow-hidden bg-[#071a36] text-white shadow-2x",
+        "function": "AdminSidebar"
+      },
+      {
+        "name": "nav",
+        "line": 152,
+        "class": "flex-1 overflow-y-auto px-4 py-6",
+        "function": "AdminSidebar"
+      },
+      {
+        "name": "header",
+        "line": 265,
+        "class": "admin-navbar sticky top-0 z-30 flex h-[76px] items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 backdrop-b",
+        "function": "AdminNavbar"
+      },
+      {
+        "name": "nav",
+        "line": 336,
+        "class": "fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 px-2 py-2 shadow-[0_-8px_30px_rgba(7,26,54,0.08)] backdro",
+        "function": "AdminMobileNav"
+      },
+      {
+        "name": "AdminSidebar",
+        "line": 1131,
+        "class": "",
+        "function": "AdminRecruitersPage"
+      },
+      {
+        "name": "AdminNavbar",
+        "line": 1138,
+        "class": "",
+        "function": "AdminRecruitersPage"
+      },
+      {
+        "name": "main",
+        "line": 1144,
+        "class": "lg:ml-[270px]",
+        "function": "AdminRecruitersPage"
+      },
+      {
+        "name": "AdminMobileNav",
+        "line": 1480,
+        "class": "",
+        "function": "AdminRecruitersPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminSettingsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 162,
+        "class": "{`admin-sidebar fixed inset-y-0 left-0 z-[70] flex w-[270px] flex-col bg-[#071a36] text-white transition-transform duration-300 lg",
+        "function": "AdminSettingsPage"
+      },
+      {
+        "name": "nav",
+        "line": 229,
+        "class": "space-y-1",
+        "function": "AdminSettingsPage"
+      },
+      {
+        "name": "div",
+        "line": 318,
+        "class": "lg:pl-[270px]",
+        "function": "AdminSettingsPage"
+      },
+      {
+        "name": "header",
+        "line": 321,
+        "class": "admin-navbar sticky top-0 z-40 h-[76px] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl",
+        "function": "AdminSettingsPage"
+      },
+      {
+        "name": "main",
+        "line": 396,
+        "class": "px-4 pb-28 pt-6 sm:px-7 sm:pt-8 lg:px-9 lg:pb-10",
+        "function": "AdminSettingsPage"
+      },
+      {
+        "name": "aside",
+        "line": 437,
+        "class": "h-fit rounded-[24px] border border-slate-200 bg-white p-3 shadow-xl shadow-slate-200/50 xl:sticky xl:top-[96px]",
+        "function": "AdminSettingsPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminStatisticsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 81,
+        "class": "admin-sidebar fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "AdminStatisticsPage"
+      },
+      {
+        "name": "nav",
+        "line": 146,
+        "class": "space-y-1",
+        "function": "AdminStatisticsPage"
+      },
+      {
+        "name": "nav",
+        "line": 198,
+        "class": "space-y-1",
+        "function": "AdminStatisticsPage"
+      },
+      {
+        "name": "div",
+        "line": 311,
+        "class": "lg:pl-[270px]",
+        "function": "AdminStatisticsPage"
+      },
+      {
+        "name": "header",
+        "line": 315,
+        "class": "admin-navbar sticky top-0 z-40 h-[76px] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl",
+        "function": "AdminStatisticsPage"
+      },
+      {
+        "name": "main",
+        "line": 395,
+        "class": "px-4 pb-28 pt-6 sm:px-7 sm:pt-8 lg:px-9 lg:pb-10",
+        "function": "AdminStatisticsPage"
+      },
+      {
+        "name": "nav",
+        "line": 1164,
+        "class": "fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-2 pb-2 pt-2 backdrop-blur-xl lg:hidden",
+        "function": "AdminStatisticsPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminUserDetailPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 207,
+        "class": "{`admin-sidebar fixed inset-y-0 left-0 z-[70] flex w-[270px] flex-col bg-[#071a36] text-white transition-transform duration-300 lg",
+        "function": "AdminUserDetailPage"
+      },
+      {
+        "name": "nav",
+        "line": 270,
+        "class": "space-y-1",
+        "function": "AdminUserDetailPage"
+      },
+      {
+        "name": "div",
+        "line": 315,
+        "class": "lg:pl-[270px]",
+        "function": "AdminUserDetailPage"
+      },
+      {
+        "name": "header",
+        "line": 318,
+        "class": "admin-navbar sticky top-0 z-40 h-[76px] border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "AdminUserDetailPage"
+      },
+      {
+        "name": "main",
+        "line": 354,
+        "class": "px-4 pb-10 pt-6 sm:px-7 lg:px-9",
+        "function": "AdminUserDetailPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/admin/AdminUsersPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 85,
+        "class": "admin-sidebar fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "AdminSidebar"
+      },
+      {
+        "name": "nav",
+        "line": 136,
+        "class": "space-y-1.5",
+        "function": "AdminSidebar"
+      },
+      {
+        "name": "nav",
+        "line": 183,
+        "class": "space-y-1.5",
+        "function": "AdminSidebar"
+      },
+      {
+        "name": "header",
+        "line": 262,
+        "class": "admin-navbar sticky top-0 z-40 hidden h-[76px] items-center justify-between border-b border-slate-200/80 bg-white/90 px-6 backdrop",
+        "function": "AdminNavbar"
+      },
+      {
+        "name": "div",
+        "line": 387,
+        "class": "fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white/95 px-2 py-2 backdrop-blur-xl lg:hidden",
+        "function": "MobileNavigation"
+      },
+      {
+        "name": "AdminSidebar",
+        "line": 1208,
+        "class": "",
+        "function": "AdminUsersPage"
+      },
+      {
+        "name": "main",
+        "line": 1214,
+        "class": "min-h-screen lg:pl-[270px]",
+        "function": "AdminUsersPage"
+      },
+      {
+        "name": "AdminNavbar",
+        "line": 1215,
+        "class": "",
+        "function": "AdminUsersPage"
+      },
+      {
+        "name": "AdminSidebar",
+        "line": 1227,
+        "class": "",
+        "function": "AdminUsersPage"
+      },
+      {
+        "name": "main",
+        "line": 1233,
+        "class": "min-h-screen pb-24 lg:pl-[270px] lg:pb-0",
+        "function": "AdminUsersPage"
+      },
+      {
+        "name": "AdminNavbar",
+        "line": 1234,
+        "class": "",
+        "function": "AdminUsersPage"
+      },
+      {
+        "name": "MobileHeader",
+        "line": 1236,
+        "class": "",
+        "function": "AdminUsersPage"
+      },
+      {
+        "name": "MobileNavigation",
+        "line": 1634,
+        "class": "",
+        "function": "AdminUsersPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateAIPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 89,
+        "class": "fixed inset-y-0 left-0 z-40 hidden w-[260px] border-r border-slate-200 bg-white lg:flex lg:flex-col",
+        "function": "CandidateAIPage"
+      },
+      {
+        "name": "nav",
+        "line": 107,
+        "class": "space-y-1",
+        "function": "CandidateAIPage"
+      },
+      {
+        "name": "div",
+        "line": 186,
+        "class": "lg:pl-[260px]",
+        "function": "CandidateAIPage"
+      },
+      {
+        "name": "main",
+        "line": 188,
+        "class": "min-h-screen",
+        "function": "CandidateAIPage"
+      },
+      {
+        "name": "header",
+        "line": 194,
+        "class": "sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "CandidateAIPage"
+      },
+      {
+        "name": "nav",
+        "line": 480,
+        "class": "fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pb-safe pt-2 backdrop-blur-xl lg:hidden",
+        "function": "CandidateAIPage"
+      },
+      {
+        "name": "div",
+        "line": 563,
+        "class": "fixed bottom-5 left-5 z-[150] rounded-2xl bg-blue-600 p-5 text-white shadow-xl",
+        "function": "CandidateAIPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateAlertsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 92,
+        "class": "fixed inset-y-0 left-0 z-40 hidden w-[260px] border-r border-slate-200 bg-white lg:flex lg:flex-col",
+        "function": "CandidateSidebar"
+      },
+      {
+        "name": "nav",
+        "line": 114,
+        "class": "space-y-1",
+        "function": "CandidateSidebar"
+      },
+      {
+        "name": "CandidateSidebar",
+        "line": 447,
+        "class": "",
+        "function": "CandidateAlertsPage"
+      },
+      {
+        "name": "div",
+        "line": 458,
+        "class": "lg:pl-[260px]",
+        "function": "CandidateAlertsPage"
+      },
+      {
+        "name": "main",
+        "line": 460,
+        "class": "min-h-screen",
+        "function": "CandidateAlertsPage"
+      },
+      {
+        "name": "header",
+        "line": 467,
+        "class": "sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "CandidateAlertsPage"
+      },
+      {
+        "name": "nav",
+        "line": 766,
+        "class": "fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pb-safe pt-2 backdrop-blur-xl lg:hidden",
+        "function": "CandidateAlertsPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateApplicationsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 143,
+        "class": "fixed inset-y-0 left-0 z-40 hidden w-[260px] border-r border-slate-200 bg-white lg:flex lg:flex-col",
+        "function": "CandidateApplicationsPage"
+      },
+      {
+        "name": "nav",
+        "line": 160,
+        "class": "space-y-1",
+        "function": "CandidateApplicationsPage"
+      },
+      {
+        "name": "div",
+        "line": 246,
+        "class": "lg:pl-[260px]",
+        "function": "CandidateApplicationsPage"
+      },
+      {
+        "name": "main",
+        "line": 248,
+        "class": "min-h-screen",
+        "function": "CandidateApplicationsPage"
+      },
+      {
+        "name": "header",
+        "line": 254,
+        "class": "sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "CandidateApplicationsPage"
+      },
+      {
+        "name": "nav",
+        "line": 567,
+        "class": "fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pb-safe pt-2 backdrop-blur-xl lg:hidden",
+        "function": "CandidateApplicationsPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateCVPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 127,
+        "class": "fixed inset-y-0 left-0 z-40 hidden w-[260px] border-r border-slate-200 bg-white lg:flex lg:flex-col",
+        "function": "CandidateCVPage"
+      },
+      {
+        "name": "nav",
+        "line": 148,
+        "class": "space-y-1",
+        "function": "CandidateCVPage"
+      },
+      {
+        "name": "div",
+        "line": 238,
+        "class": "lg:pl-[260px]",
+        "function": "CandidateCVPage"
+      },
+      {
+        "name": "main",
+        "line": 240,
+        "class": "min-h-screen",
+        "function": "CandidateCVPage"
+      },
+      {
+        "name": "header",
+        "line": 246,
+        "class": "sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "CandidateCVPage"
+      },
+      {
+        "name": "nav",
+        "line": 684,
+        "class": "fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pb-safe pt-2 backdrop-blur-xl lg:hidden",
+        "function": "CandidateCVPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateDashboardPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 158,
+        "class": "fixed inset-y-0 left-0 z-40 hidden w-[260px] border-r border-slate-200 bg-white lg:flex lg:flex-col",
+        "function": "CandidateDashboardPage"
+      },
+      {
+        "name": "nav",
+        "line": 180,
+        "class": "space-y-1",
+        "function": "CandidateDashboardPage"
+      },
+      {
+        "name": "div",
+        "line": 274,
+        "class": "lg:pl-[260px]",
+        "function": "CandidateDashboardPage"
+      },
+      {
+        "name": "main",
+        "line": 276,
+        "class": "min-h-screen",
+        "function": "CandidateDashboardPage"
+      },
+      {
+        "name": "header",
+        "line": 282,
+        "class": "sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "CandidateDashboardPage"
+      },
+      {
+        "name": "aside",
+        "line": 623,
+        "class": "space-y-5",
+        "function": "CandidateDashboardPage"
+      },
+      {
+        "name": "nav",
+        "line": 822,
+        "class": "fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pb-safe pt-2 backdrop-blur-xl lg:hidden",
+        "function": "CandidateDashboardPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateDocumentsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 145,
+        "class": "fixed inset-y-0 left-0 z-40 hidden w-[260px] border-r border-slate-200 bg-white lg:flex lg:flex-col",
+        "function": "CandidateDocumentsPage"
+      },
+      {
+        "name": "nav",
+        "line": 167,
+        "class": "space-y-1",
+        "function": "CandidateDocumentsPage"
+      },
+      {
+        "name": "div",
+        "line": 255,
+        "class": "lg:pl-[260px]",
+        "function": "CandidateDocumentsPage"
+      },
+      {
+        "name": "main",
+        "line": 257,
+        "class": "min-h-screen",
+        "function": "CandidateDocumentsPage"
+      },
+      {
+        "name": "header",
+        "line": 264,
+        "class": "sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "CandidateDocumentsPage"
+      },
+      {
+        "name": "nav",
+        "line": 618,
+        "class": "fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pb-safe pt-2 backdrop-blur-xl lg:hidden",
+        "function": "CandidateDocumentsPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateJobDetailPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 132,
+        "class": "fixed inset-y-0 left-0 z-40 hidden w-[260px] border-r border-slate-200 bg-white lg:flex lg:flex-col",
+        "function": "CandidateJobDetailPage"
+      },
+      {
+        "name": "nav",
+        "line": 149,
+        "class": "space-y-1",
+        "function": "CandidateJobDetailPage"
+      },
+      {
+        "name": "div",
+        "line": 225,
+        "class": "lg:pl-[260px]",
+        "function": "CandidateJobDetailPage"
+      },
+      {
+        "name": "main",
+        "line": 226,
+        "class": "min-h-screen",
+        "function": "CandidateJobDetailPage"
+      },
+      {
+        "name": "header",
+        "line": 231,
+        "class": "sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "CandidateJobDetailPage"
+      },
+      {
+        "name": "aside",
+        "line": 530,
+        "class": "space-y-5",
+        "function": "CandidateJobDetailPage"
+      },
+      {
+        "name": "nav",
+        "line": 684,
+        "class": "fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pb-safe pt-2 backdrop-blur-xl lg:hidden",
+        "function": "CandidateJobDetailPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateJobsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 289,
+        "class": "fixed inset-y-0 left-0 z-40 hidden w-[260px] border-r border-slate-200 bg-white lg:flex lg:flex-col",
+        "function": "CandidateJobsPage"
+      },
+      {
+        "name": "nav",
+        "line": 304,
+        "class": "space-y-1",
+        "function": "CandidateJobsPage"
+      },
+      {
+        "name": "div",
+        "line": 387,
+        "class": "lg:pl-[260px]",
+        "function": "CandidateJobsPage"
+      },
+      {
+        "name": "main",
+        "line": 389,
+        "class": "min-h-screen",
+        "function": "CandidateJobsPage"
+      },
+      {
+        "name": "header",
+        "line": 395,
+        "class": "sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "CandidateJobsPage"
+      },
+      {
+        "name": "aside",
+        "line": 886,
+        "class": "absolute inset-y-0 right-0 flex w-full max-w-[430px] flex-col border-l border-slate-200 bg-white shadow-2xl",
+        "function": "CandidateJobsPage"
+      },
+      {
+        "name": "nav",
+        "line": 1152,
+        "class": "fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pb-safe pt-2 backdrop-blur-xl lg:hidden",
+        "function": "CandidateJobsPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/candidat/CandidateProfilePage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 560,
+        "class": "fixed inset-y-0 left-0 z-40 hidden w-[260px] border-r border-slate-200 bg-white lg:flex lg:flex-col",
+        "function": "CandidateProfilePage"
+      },
+      {
+        "name": "nav",
+        "line": 575,
+        "class": "space-y-1",
+        "function": "CandidateProfilePage"
+      },
+      {
+        "name": "div",
+        "line": 695,
+        "class": "lg:pl-[260px]",
+        "function": "CandidateProfilePage"
+      },
+      {
+        "name": "main",
+        "line": 697,
+        "class": "min-h-screen",
+        "function": "CandidateProfilePage"
+      },
+      {
+        "name": "header",
+        "line": 701,
+        "class": "sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur-xl",
+        "function": "CandidateProfilePage"
+      },
+      {
+        "name": "aside",
+        "line": 950,
+        "class": "",
+        "function": "CandidateProfilePage"
+      },
+      {
+        "name": "nav",
+        "line": 1829,
+        "class": "fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-3 pb-safe pt-2 backdrop-blur-xl lg:hidden",
+        "function": "CandidateProfilePage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterApplicationsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 297,
+        "class": "fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "RecruiterApplicationsPage"
+      },
+      {
+        "name": "nav",
+        "line": 358,
+        "class": "space-y-1",
+        "function": "RecruiterApplicationsPage"
+      },
+      {
+        "name": "nav",
+        "line": 412,
+        "class": "space-y-1",
+        "function": "RecruiterApplicationsPage"
+      },
+      {
+        "name": "div",
+        "line": 520,
+        "class": "lg:pl-[270px]",
+        "function": "RecruiterApplicationsPage"
+      },
+      {
+        "name": "header",
+        "line": 524,
+        "class": "sticky top-0 z-40 h-[76px] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl",
+        "function": "RecruiterApplicationsPage"
+      },
+      {
+        "name": "main",
+        "line": 610,
+        "class": "px-4 pb-28 pt-6 sm:px-7 sm:pt-8 lg:px-9 lg:pb-10",
+        "function": "RecruiterApplicationsPage"
+      },
+      {
+        "name": "nav",
+        "line": 1028,
+        "class": "fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-2 pb-2 pt-2 backdrop-blur-xl lg:hidden",
+        "function": "RecruiterApplicationsPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterCandidateProfilePage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 174,
+        "class": "fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "RecruiterCandidateProfilePage"
+      },
+      {
+        "name": "nav",
+        "line": 247,
+        "class": "space-y-1",
+        "function": "RecruiterCandidateProfilePage"
+      },
+      {
+        "name": "nav",
+        "line": 303,
+        "class": "space-y-1",
+        "function": "RecruiterCandidateProfilePage"
+      },
+      {
+        "name": "div",
+        "line": 413,
+        "class": "lg:pl-[270px]",
+        "function": "RecruiterCandidateProfilePage"
+      },
+      {
+        "name": "header",
+        "line": 417,
+        "class": "sticky top-0 z-40 h-[76px] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl",
+        "function": "RecruiterCandidateProfilePage"
+      },
+      {
+        "name": "main",
+        "line": 496,
+        "class": "px-4 pb-28 pt-6 sm:px-7 sm:pt-8 lg:px-9 lg:pb-10",
+        "function": "RecruiterCandidateProfilePage"
+      },
+      {
+        "name": "nav",
+        "line": 1355,
+        "class": "fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-2 pb-2 pt-2 backdrop-blur-xl lg:hidden",
+        "function": "RecruiterCandidateProfilePage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterCompanyPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 181,
+        "class": "fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "RecruiterCompanyPage"
+      },
+      {
+        "name": "nav",
+        "line": 263,
+        "class": "space-y-1",
+        "function": "RecruiterCompanyPage"
+      },
+      {
+        "name": "nav",
+        "line": 300,
+        "class": "space-y-1",
+        "function": "RecruiterCompanyPage"
+      },
+      {
+        "name": "div",
+        "line": 427,
+        "class": "lg:pl-[270px]",
+        "function": "RecruiterCompanyPage"
+      },
+      {
+        "name": "header",
+        "line": 431,
+        "class": "sticky top-0 z-40 h-[76px] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl",
+        "function": "RecruiterCompanyPage"
+      },
+      {
+        "name": "main",
+        "line": 515,
+        "class": "px-4 pb-28 pt-6 sm:px-7 sm:pt-8 lg:px-9 lg:pb-10",
+        "function": "RecruiterCompanyPage"
+      },
+      {
+        "name": "nav",
+        "line": 1264,
+        "class": "fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-2 pb-2 pt-2 backdrop-blur-xl lg:hidden",
+        "function": "RecruiterCompanyPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterCVthequePage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 195,
+        "class": "fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "RecruiterCVthequePage"
+      },
+      {
+        "name": "nav",
+        "line": 256,
+        "class": "space-y-1",
+        "function": "RecruiterCVthequePage"
+      },
+      {
+        "name": "nav",
+        "line": 307,
+        "class": "space-y-1",
+        "function": "RecruiterCVthequePage"
+      },
+      {
+        "name": "div",
+        "line": 413,
+        "class": "lg:pl-[270px]",
+        "function": "RecruiterCVthequePage"
+      },
+      {
+        "name": "header",
+        "line": 417,
+        "class": "sticky top-0 z-40 h-[76px] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl",
+        "function": "RecruiterCVthequePage"
+      },
+      {
+        "name": "main",
+        "line": 501,
+        "class": "px-4 pb-28 pt-6 sm:px-7 sm:pt-8 lg:px-9 lg:pb-10",
+        "function": "RecruiterCVthequePage"
+      },
+      {
+        "name": "nav",
+        "line": 989,
+        "class": "fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-2 pb-2 pt-2 backdrop-blur-xl lg:hidden",
+        "function": "RecruiterCVthequePage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterDashboardPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 94,
+        "class": "fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "RecruiterDashboardPage"
+      },
+      {
+        "name": "nav",
+        "line": 155,
+        "class": "space-y-1",
+        "function": "RecruiterDashboardPage"
+      },
+      {
+        "name": "nav",
+        "line": 209,
+        "class": "space-y-1",
+        "function": "RecruiterDashboardPage"
+      },
+      {
+        "name": "div",
+        "line": 316,
+        "class": "lg:pl-[270px]",
+        "function": "RecruiterDashboardPage"
+      },
+      {
+        "name": "header",
+        "line": 320,
+        "class": "sticky top-0 z-40 h-[76px] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl",
+        "function": "RecruiterDashboardPage"
+      },
+      {
+        "name": "main",
+        "line": 403,
+        "class": "px-4 pb-28 pt-6 sm:px-7 sm:pt-8 lg:px-9 lg:pb-10",
+        "function": "RecruiterDashboardPage"
+      },
+      {
+        "name": "nav",
+        "line": 1221,
+        "class": "fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-2 pb-2 pt-2 backdrop-blur-xl lg:hidden",
+        "function": "RecruiterDashboardPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterInterviewsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 307,
+        "class": "fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "RecruiterInterviewsPage"
+      },
+      {
+        "name": "nav",
+        "line": 352,
+        "class": "space-y-1",
+        "function": "RecruiterInterviewsPage"
+      },
+      {
+        "name": "nav",
+        "line": 396,
+        "class": "space-y-1",
+        "function": "RecruiterInterviewsPage"
+      },
+      {
+        "name": "main",
+        "line": 469,
+        "class": "min-h-screen lg:pl-[270px]",
+        "function": "RecruiterInterviewsPage"
+      },
+      {
+        "name": "header",
+        "line": 471,
+        "class": "sticky top-0 z-30 flex h-[76px] items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 backdrop-blur-xl sm:px-",
+        "function": "RecruiterInterviewsPage"
+      },
+      {
+        "name": "nav",
+        "line": 806,
+        "class": "fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 px-2 py-2 backdrop-blur-xl lg:hidden",
+        "function": "RecruiterInterviewsPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterJobsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 382,
+        "class": "fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "RecruiterJobsPage"
+      },
+      {
+        "name": "nav",
+        "line": 450,
+        "class": "space-y-1",
+        "function": "RecruiterJobsPage"
+      },
+      {
+        "name": "nav",
+        "line": 503,
+        "class": "space-y-1",
+        "function": "RecruiterJobsPage"
+      },
+      {
+        "name": "div",
+        "line": 614,
+        "class": "lg:pl-[270px]",
+        "function": "RecruiterJobsPage"
+      },
+      {
+        "name": "header",
+        "line": 619,
+        "class": "sticky top-0 z-40 h-[76px] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl",
+        "function": "RecruiterJobsPage"
+      },
+      {
+        "name": "main",
+        "line": 701,
+        "class": "px-4 pb-28 pt-6 sm:px-7 sm:pt-8 lg:px-9 lg:pb-10",
+        "function": "RecruiterJobsPage"
+      },
+      {
+        "name": "nav",
+        "line": 1092,
+        "class": "fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-2 pb-2 pt-2 backdrop-blur-xl lg:hidden",
+        "function": "RecruiterJobsPage"
+      }
+    ]
+  },
+  {
+    "file": "src/pages/recruteur/RecruiterSettingsPage.jsx",
+    "nodes": [
+      {
+        "name": "aside",
+        "line": 154,
+        "class": "fixed inset-y-0 left-0 z-50 hidden w-[270px] bg-[#071a36] text-white lg:flex lg:flex-col",
+        "function": "RecruiterSettingsPage"
+      },
+      {
+        "name": "nav",
+        "line": 225,
+        "class": "space-y-1",
+        "function": "RecruiterSettingsPage"
+      },
+      {
+        "name": "nav",
+        "line": 263,
+        "class": "space-y-1",
+        "function": "RecruiterSettingsPage"
+      },
+      {
+        "name": "div",
+        "line": 397,
+        "class": "lg:pl-[270px]",
+        "function": "RecruiterSettingsPage"
+      },
+      {
+        "name": "header",
+        "line": 401,
+        "class": "sticky top-0 z-40 h-[76px] border-b border-slate-200/80 bg-white/90 backdrop-blur-xl",
+        "function": "RecruiterSettingsPage"
+      },
+      {
+        "name": "main",
+        "line": 487,
+        "class": "px-4 pb-28 pt-6 sm:px-7 sm:pt-8 lg:px-9 lg:pb-10",
+        "function": "RecruiterSettingsPage"
+      },
+      {
+        "name": "aside",
+        "line": 552,
+        "class": "h-fit rounded-[24px] border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/50",
+        "function": "RecruiterSettingsPage"
+      },
+      {
+        "name": "nav",
+        "line": 743,
+        "class": "fixed inset-x-0 bottom-0 z-50 border-t border-slate-200 bg-white/95 px-2 pb-2 pt-2 backdrop-blur-xl lg:hidden",
+        "function": "RecruiterSettingsPage"
+      }
+    ]
+  }
+]

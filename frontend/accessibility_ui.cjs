@@ -1,0 +1,20 @@
+const fs=require("fs"),path=require("path"),parser=require("./.ui-tools/node_modules/@babel/parser"),traverse=require("./.ui-tools/node_modules/@babel/traverse").default;
+const labels={X:"Fermer",Heart:"Ajouter aux favoris",MoreHorizontal:"Afficher les actions",MoreVertical:"Afficher les actions",Eye:"Consulter",Trash2:"Supprimer",Trash:"Supprimer",Pencil:"Modifier",Edit:"Modifier",Edit3:"Modifier",Download:"Télécharger",Copy:"Copier",Search:"Rechercher",Bell:"Voir les notifications",ChevronLeft:"Précédent",ChevronRight:"Suivant",ArrowLeft:"Retour",ArrowRight:"Continuer",Check:"Confirmer",CheckCircle2:"Confirmer",Menu:"Ouvrir le menu",Upload:"Importer un fichier",Send:"Envoyer",RefreshCw:"Actualiser",Plus:"Ajouter",ChevronDown:"Afficher les options",ExternalLink:"Ouvrir le lien"};
+function walk(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const file=path.join(dir,e.name);if(e.isDirectory())walk(file);else if(/\.jsx$/.test(file)&&!file.includes(path.join("components","ui"))){let s=fs.readFileSync(file,"utf8"),edits=[];traverse(parser.parse(s,{sourceType:"module",plugins:["jsx"]}),{JSXElement(p){const n=p.node;if(!["Button","button"].includes(n.openingElement.name.name))return;if(n.openingElement.attributes.some(a=>["aria-label","aria-labelledby"].includes(a.name?.name)))return;const meaningful=n.children.some(c=>c.type==="JSXText"&&c.value.trim());if(meaningful)return;const children=n.children.filter(c=>c.type==="JSXElement");if(children.length!==1)return;const icon=children[0].openingElement.name.name;if(labels[icon])edits.push([n.openingElement.name.end,n.openingElement.name.end,' aria-label='+JSON.stringify(labels[icon])]);}});
+edits.sort((a,b)=>b[0]-a[0]);for(const[a,b,v]of edits)s=s.slice(0,a)+v+s.slice(b);fs.writeFileSync(file,s);}}}walk("src");
+let p="src/components/ui/index.jsx",s=fs.readFileSync(p,"utf8");const start=s.indexOf("export function ModalFrame("),end=s.indexOf("export function IconButton(",start);
+s=s.slice(0,start)+`export function ModalFrame({children,onClose,className="",...props}){
+ const ref=useRef(null),closeRef=useRef(onClose);const[label,setLabel]=useState(props["aria-label"]||"Fenêtre de dialogue");
+ useEffect(()=>{closeRef.current=onClose;},[onClose]);
+ useEffect(()=>{
+  const previous=document.activeElement,oldOverflow=document.body.style.overflow;document.body.style.overflow="hidden";
+  const heading=ref.current?.querySelector("h1,h2,h3");if(!props["aria-label"]&&heading?.textContent)setLabel(heading.textContent);
+  const isolated=[];for(let ancestor=ref.current;ancestor&&ancestor!==document.body;ancestor=ancestor.parentElement){for(const sibling of ancestor.parentElement?.children||[]){if(sibling!==ancestor){isolated.push([sibling,sibling.inert]);sibling.inert=true;}}}
+  const focusables=()=>Array.from(ref.current?.querySelectorAll('button:not(:disabled),a[href],input:not(:disabled),select:not(:disabled),textarea:not(:disabled),[tabindex="0"]')||[]).filter(el=>el.getClientRects().length);
+  (focusables().find(el=>el.getAttribute("aria-label")==="Fermer")||focusables()[0]||ref.current)?.focus();
+  const key=event=>{if(event.key==="Escape"){event.preventDefault();closeRef.current?.();}if(event.key==="Tab"){const list=focusables();if(!list.length){event.preventDefault();return;}const first=list[0],last=list[list.length-1];if(event.shiftKey&&(document.activeElement===first||document.activeElement===ref.current)){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}};
+  document.addEventListener("keydown",key);return()=>{isolated.forEach(([element,inert])=>{element.inert=inert;});document.body.style.overflow=oldOverflow;document.removeEventListener("keydown",key);previous?.focus();};
+ },[]);
+ return <div {...props} ref={ref} role="dialog" aria-modal="true" aria-label={label} tabIndex={-1} className={"ui-modal-frame "+className}>{children}</div>;
+}
+`+s.slice(end);fs.writeFileSync(p,s);console.log("Icon labels, stable modal focus and background isolation updated");
