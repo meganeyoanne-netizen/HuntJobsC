@@ -59,3 +59,4 @@ npm run dev
 ## 🔒 Sécurité et Bonnes Pratiques
 
 - Les fichiers d'environnement (`.env`), la base de données locale (`*.sqlite3`) et les dossiers de dépendances (`node_modules`, `venv`) sont exclus du versioning via `.gitignore`.
+# HuntJobsC
