@@ -51,7 +51,7 @@ try:
 except (FileNotFoundError,ValueError):
     pids = {}
 if not ensure_project_port(8000, str(ROOT / "backend")):
-    pids["backend"] = launch([str(python), str(ROOT / "backend" / "manage.py"), "runserver", "127.0.0.1:8000", "--noreload"], ROOT / "backend", "backend")
+    pids["backend"] = launch([str(python), str(ROOT / "backend" / "manage.py"), "runserver", "127.0.0.1:8000"], ROOT / "backend", "backend")
 if not ensure_project_port(5173, str(ROOT / "frontend")):
     pids["frontend"] = launch(["cmd.exe", "/c", "npm", "run", "dev"], ROOT / "frontend", "frontend")
 if "alerts" not in pids:
@@ -64,3 +64,10 @@ for _ in range(30):
 else:
     print("Consultez backend/.local/backend.log et frontend.log.", file=sys.stderr)
     sys.exit(1)
+
+if "--keep-alive" in sys.argv or "-k" in sys.argv:
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        pass

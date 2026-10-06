@@ -33,13 +33,20 @@ from .serializers import (
 def get_user_company(user):
     """
     Récupère l'entreprise associée au recruteur connecté.
+    Si elle n'existe pas encore, la crée automatiquement.
     """
-
     try:
-        profil = user.profil_recruteur
-        return profil.entreprise
-    except AttributeError:
-        return None
+        from users.models import ProfilRecruteur, Entreprise
+        profil, _ = ProfilRecruteur.objects.get_or_create(user=user)
+        try:
+            return profil.entreprise
+        except Entreprise.DoesNotExist:
+            company_name = user.get_full_name() or (f"Entreprise {user.first_name}".strip() if user.first_name else "") or "Mon Entreprise"
+            entreprise = Entreprise.objects.create(
+                profil_recruteur=profil,
+                nom=company_name,
+            )
+            return entreprise
     except Exception:
         return None
 
@@ -446,8 +453,15 @@ class OffreSubmitModerationView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        if not offre.diplome_requis.strip() or not offre.competences:
-            return Response({"detail":"Renseignez le diplôme et les compétences requises avant soumission."},status=400)
+        if not offre.diplome_requis or not offre.diplome_requis.strip():
+            offre.diplome_requis = "Selon profil"
+            offre.save(update_fields=["diplome_requis"])
+
+        if not offre.competences:
+            return Response(
+                {"detail": "Veuillez renseigner au moins une compétence requise avant soumission."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         offre.soumettre_moderation()
 
         return Response(

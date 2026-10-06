@@ -77,6 +77,16 @@ class RegisterSerializer(serializers.ModelSerializer):
     - Recruteur -> ProfilRecruteur
     """
 
+    username = serializers.CharField(
+        required=False,
+        allow_blank=True,
+    )
+
+    role = serializers.CharField(
+        required=False,
+        default=User.Role.CANDIDAT,
+    )
+
     password = serializers.CharField(
         write_only=True,
         required=True,
@@ -105,6 +115,12 @@ class RegisterSerializer(serializers.ModelSerializer):
             "company",
         )
 
+    def validate_username(self, value):
+        import re, uuid
+        val = (value or "").strip()
+        cleaned = re.sub(r"[^\w.@+-]", "_", val)[:150]
+        return cleaned or f"user_{uuid.uuid4().hex[:8]}"
+
     def validate_email(self, value):
         normalized = (value or "").strip().lower()
         if User.objects.filter(email__iexact=normalized).exists():
@@ -116,18 +132,26 @@ class RegisterSerializer(serializers.ModelSerializer):
     def validate_role(self, value):
         """
         Empêche la création d'un administrateur
-        via l'inscription publique.
+        via l'inscription publique, et normalise la casse.
         """
-
-        if value == User.Role.ADMIN:
+        val = str(value or "").strip().upper()
+        if val in ["CANDIDAT", "CANDIDATE"]:
+            return User.Role.CANDIDAT
+        elif val in ["RECRUTEUR", "RECRUITER"]:
+            return User.Role.RECRUTEUR
+        elif val == User.Role.ADMIN:
             raise serializers.ValidationError(
                 "Le rôle Administrateur ne peut pas être créé "
                 "via l'inscription publique."
             )
-
-        return value
+        raise serializers.ValidationError(f"« {value} » n'est pas un choix valide.")
 
     def validate(self, attrs):
+        import re, uuid
+        if not attrs.get("username"):
+            email_part = (attrs.get("email") or "user").split("@")[0]
+            clean_part = re.sub(r"[^\w.@+-]", "_", email_part)[:50]
+            attrs["username"] = f"{clean_part}_{uuid.uuid4().hex[:8]}"
 
         if attrs["password"] != attrs["password_confirm"]:
             raise serializers.ValidationError(
@@ -173,12 +197,21 @@ class RegisterSerializer(serializers.ModelSerializer):
                 )
             )
 
-            # Création automatique d'une entreprise vide.
-            # Le recruteur pourra compléter le profil plus tard.
-            company = Entreprise.objects.create(profil_recruteur=profil_recruteur)
-            company_serializer = EntrepriseSerializer(company, data=company_data, partial=True)
-            company_serializer.is_valid(raise_exception=True)
-            company_serializer.save()
+            # Création automatique d'une entreprise.
+            default_company_name = (
+                company_data.get("nom")
+                or user.get_full_name()
+                or f"Entreprise {user.first_name}".strip()
+                or "Mon Entreprise"
+            )
+            company = Entreprise.objects.create(
+                profil_recruteur=profil_recruteur,
+                nom=default_company_name,
+            )
+            if company_data:
+                company_serializer = EntrepriseSerializer(company, data=company_data, partial=True)
+                if company_serializer.is_valid():
+                    company_serializer.save()
 
         return user
 
@@ -192,7 +225,8 @@ class LoginSerializer(serializers.Serializer):
     Connexion par e-mail et mot de passe.
     """
 
-    email = serializers.CharField()
+    email = serializers.CharField(required=False)
+    username = serializers.CharField(required=False)
 
     password = serializers.CharField(
         write_only=True,
@@ -200,47 +234,67 @@ class LoginSerializer(serializers.Serializer):
     )
 
     def validate(self, attrs):
+        raw_identifier = (attrs.get("email") or attrs.get("username") or "").strip()
+        password = attrs.get("password") or ""
 
-        email = (attrs.get("email") or "").strip()
-        password = attrs.get("password")
+        if not raw_identifier:
+            raise serializers.ValidationError(
+                "Veuillez renseigner votre adresse e-mail ou nom d'utilisateur."
+            )
 
-        # 1. Recherche par email insensible à la casse (insensible majuscules/minuscules)
-        user_candidate = User.objects.filter(email__iexact=email).first()
+        if not password:
+            raise serializers.ValidationError(
+                "Veuillez renseigner votre mot de passe."
+            )
+
+        # 1. Recherche par email insensible à la casse
+        user_candidate = User.objects.filter(email__iexact=raw_identifier).first()
+        if not user_candidate and "@" not in raw_identifier:
+            # 2. Recherche par nom d'utilisateur (username)
+            user_candidate = User.objects.filter(username__iexact=raw_identifier).first()
         if not user_candidate:
-            # Recherche alternative par nom d'utilisateur (username)
-            user_candidate = User.objects.filter(username__iexact=email).first()
+            # 3. Recherche alternative par début de nom d'utilisateur
+            user_candidate = User.objects.filter(email__iexact=raw_identifier.lower()).first()
 
         user = None
-        if user_candidate and user_candidate.check_password(password):
-            user = user_candidate
-        else:
+        if user_candidate:
+            if user_candidate.check_password(password):
+                user = user_candidate
+            elif password != password.strip() and user_candidate.check_password(password.strip()):
+                user = user_candidate
+
+        if not user:
             # Fallback authenticate Django standard
             user = authenticate(
                 request=self.context.get("request"),
-                username=email,
+                username=raw_identifier,
                 password=password,
-            )
+            ) or authenticate(
+                request=self.context.get("request"),
+                username=raw_identifier.lower(),
+                password=password,
+            ) or (authenticate(
+                request=self.context.get("request"),
+                username=raw_identifier,
+                password=password.strip(),
+            ) if password != password.strip() else None)
 
         if not user:
-
             raise serializers.ValidationError(
                 "Adresse e-mail ou mot de passe incorrect."
             )
 
         if not user.is_active:
-
             raise serializers.ValidationError(
                 "Ce compte est désactivé."
             )
 
         if user.is_suspended:
-
             raise serializers.ValidationError(
                 "Votre compte est actuellement suspendu."
             )
 
         attrs["user"] = user
-
         return attrs
 
 

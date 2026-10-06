@@ -247,6 +247,44 @@ class OffreCreateSerializer(serializers.ModelSerializer):
     d'une autre entreprise.
     """
 
+    def to_internal_value(self, data):
+        if hasattr(data, "dict"):
+            data = data.dict()
+        elif hasattr(data, "copy"):
+            data = data.copy()
+        elif isinstance(data, dict):
+            data = dict(data)
+
+        if "type_contrat" in data and isinstance(data["type_contrat"], str):
+            tc = data["type_contrat"].strip().upper()
+            data["type_contrat"] = tc
+
+        mode = data.get("mode_travail") or data.get("teletravail")
+        if mode and isinstance(mode, str):
+            m = mode.strip().upper()
+            if m in ["HYBRIDE", "HYBRID"]:
+                data["mode_travail"] = "HYBRIDE"
+            elif m in ["DISTANCIEL", "REMOTE"]:
+                data["mode_travail"] = "DISTANCIEL"
+            elif m in ["SUR_SITE", "ONSITE", "SUR SITE"]:
+                data["mode_travail"] = "SUR_SITE"
+
+        if not data.get("localisation") and data.get("lieu"):
+            data["localisation"] = data.get("lieu")
+
+        if not data.get("date_limite") and data.get("date_expiration"):
+            data["date_limite"] = data.get("date_expiration")
+
+        for field in ["competences", "avantages"]:
+            if field in data and isinstance(data[field], str):
+                try:
+                    import json
+                    data[field] = json.loads(data[field])
+                except Exception:
+                    pass
+
+        return super().to_internal_value(data)
+
     class Meta:
         model = Offre
 
@@ -321,6 +359,13 @@ class OffreCreateSerializer(serializers.ModelSerializer):
             })
 
         competences = attrs.get("competences", [])
+        if isinstance(competences, str):
+            try:
+                import json
+                competences = json.loads(competences)
+                attrs["competences"] = competences
+            except Exception:
+                pass
 
         if not isinstance(competences, list):
             raise serializers.ValidationError({
@@ -329,6 +374,36 @@ class OffreCreateSerializer(serializers.ModelSerializer):
                     "sous forme de liste."
                 )
             })
+
+        avantages = attrs.get("avantages", [])
+        if isinstance(avantages, str):
+            try:
+                import json
+                attrs["avantages"] = json.loads(avantages)
+            except Exception:
+                pass
+
+        # Inférence automatique du niveau d'études si non spécifié
+        if not attrs.get("niveau_etudes"):
+            diplome = (attrs.get("diplome_requis") or "").lower()
+            if "doctorat" in diplome:
+                attrs["niveau_etudes"] = "DOCTORAT"
+            elif any(d in diplome for d in ["master", "ingénieur", "ingenieur", "bac+5"]):
+                attrs["niveau_etudes"] = "BAC+5"
+            elif "bac+4" in diplome:
+                attrs["niveau_etudes"] = "BAC+4"
+            elif any(d in diplome for d in ["licence", "bac+3"]):
+                attrs["niveau_etudes"] = "BAC+3"
+            elif any(d in diplome for d in ["bts", "dut", "bac+2"]):
+                attrs["niveau_etudes"] = "BAC+2"
+            elif any(d in diplome for d in ["bac", "cap", "bep"]):
+                attrs["niveau_etudes"] = "BAC"
+            elif "probatoire" in diplome:
+                attrs["niveau_etudes"] = "PROBATOIRE"
+            elif "bepc" in diplome:
+                attrs["niveau_etudes"] = "BEPC"
+            else:
+                attrs["niveau_etudes"] = "AUCUN"
 
         return attrs
 
@@ -343,6 +418,44 @@ class OffreUpdateSerializer(serializers.ModelSerializer):
     - les compétences déjà validées ne peuvent pas être supprimées ;
     - les compétences peuvent cependant être ajoutées.
     """
+
+    def to_internal_value(self, data):
+        if hasattr(data, "dict"):
+            data = data.dict()
+        elif hasattr(data, "copy"):
+            data = data.copy()
+        elif isinstance(data, dict):
+            data = dict(data)
+
+        if "type_contrat" in data and isinstance(data["type_contrat"], str):
+            tc = data["type_contrat"].strip().upper()
+            data["type_contrat"] = tc
+
+        mode = data.get("mode_travail") or data.get("teletravail")
+        if mode and isinstance(mode, str):
+            m = mode.strip().upper()
+            if m in ["HYBRIDE", "HYBRID"]:
+                data["mode_travail"] = "HYBRIDE"
+            elif m in ["DISTANCIEL", "REMOTE"]:
+                data["mode_travail"] = "DISTANCIEL"
+            elif m in ["SUR_SITE", "ONSITE", "SUR SITE"]:
+                data["mode_travail"] = "SUR_SITE"
+
+        if not data.get("localisation") and data.get("lieu"):
+            data["localisation"] = data.get("lieu")
+
+        if not data.get("date_limite") and data.get("date_expiration"):
+            data["date_limite"] = data.get("date_expiration")
+
+        for field in ["competences", "avantages"]:
+            if field in data and isinstance(data[field], str):
+                try:
+                    import json
+                    data[field] = json.loads(data[field])
+                except Exception:
+                    pass
+
+        return super().to_internal_value(data)
 
     class Meta:
         model = Offre
@@ -425,6 +538,12 @@ class OffreUpdateSerializer(serializers.ModelSerializer):
         Les compétences validées précédemment doivent rester présentes.
         De nouvelles compétences peuvent être ajoutées.
         """
+        if isinstance(value, str):
+            try:
+                import json
+                value = json.loads(value)
+            except Exception:
+                pass
 
         if not isinstance(value, list):
             raise serializers.ValidationError(

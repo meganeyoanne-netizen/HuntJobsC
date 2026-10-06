@@ -19,18 +19,30 @@ function LoginPage({
   const [rememberMe, setRememberMe] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setLoginError("");
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoginError("");
+    const cleanEmail = (formData.email || "").trim();
+    if (!cleanEmail) {
+      setLoginError("Veuillez saisir votre adresse e-mail.");
+      return;
+    }
     setLoading(true);
     try {
-      if (onLogin) await onLogin({ ...formData, rememberMe });
-    } catch(error) { report(error); } finally {
+      if (onLogin) await onLogin({ email: cleanEmail, password: formData.password, rememberMe });
+    } catch(error) {
+      const msg = error?.message || "Adresse e-mail ou mot de passe incorrect.";
+      setLoginError(msg);
+      report(error);
+    } finally {
       setLoading(false);
     }
   };
@@ -49,6 +61,13 @@ function LoginPage({
                   {t("auth.loginSubtitle", "Connectez-vous à votre compte JobConnect pour continuer.")}
                 </p>
               </div>
+
+              {loginError && (
+                <div className="mb-4 flex items-start gap-2.5 rounded-xl border border-red-200 bg-red-50 p-3 text-xs font-semibold text-red-700 dark:border-red-900/50 dark:bg-red-950/50 dark:text-red-300">
+                  <span className="shrink-0">⚠️</span>
+                  <span>{loginError}</span>
+                </div>
+              )}
 
               {/* Formulaire */}
               <Form onSubmit={handleSubmit} className="space-y-3.5">

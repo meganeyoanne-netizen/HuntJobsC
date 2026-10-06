@@ -5,7 +5,7 @@ import { Button } from "../../components/ui";
 
 
 import { useResource } from "../../hooks/useResource";
-import { jobsAdapter, applicationsAdapter } from "../../services/adapters";
+import { jobsAdapter, applicationsAdapter, cvsAdapter } from "../../services/adapters";
 
 
 import { ArrowRight, BriefcaseBusiness, ChevronRight, Clock3, Heart, MapPin, Search, Sparkles, Check, CheckCircle2, TrendingUp, UserCheck, Video, FileStack, CalendarCheck2, Compass, Target } from "lucide-react";
@@ -83,11 +83,18 @@ function CandidateDashboardPage({
   const firstName = user?.firstName || "Candidat";
 
   const [stats]=useResource("/dashboard/",v=>v,{});
+  const [candidateProfile] = useResource("/users/candidate/profile/", v => v, {});
   const recommendedJobs = useResource("/offres/",jobsAdapter)[0];
   const applications = useResource("/candidatures/",applicationsAdapter)[0];
+  const cvs = useResource("/users/cvs/",cvsAdapter)[0];
   const [favorites, setFavorites] = useResource("/favoris/");
   const isFavorite = id => favorites.some(item => (typeof item === "object" ? item.offre?.id || item.offre || item.id : item) === id);
   const toggleFavorite = id => perform(async () => { await post("/favoris/", {offre:id}); setFavorites(await api("/favoris/")); });
+
+  const candidaturesCount = stats.candidatures ?? applications?.length ?? 0;
+  const entretiensCount = stats.entretiens ?? 0;
+  const recommendedCount = stats.offres_actives ?? recommendedJobs?.length ?? 0;
+  const completionPercent = stats.profile_completion ?? candidateProfile?.profile_completion ?? user.profileCompletion ?? user.profil_candidat?.profile_completion ?? 0;
 
   return (
     <div className="min-h-screen bg-[#f6f8fc] text-slate-900">
@@ -141,7 +148,7 @@ function CandidateDashboardPage({
               <StatCard
                 icon={<FileStack size={20} />}
                 label="Candidatures"
-                value={stats.candidatures || 12}
+                value={candidaturesCount}
                 detail="Candidatures envoyées"
                 onClick={() => onNavigate?.("candidate-applications")}
                 tone="blue"
@@ -150,7 +157,7 @@ function CandidateDashboardPage({
               <StatCard
                 icon={<CalendarCheck2 size={20} />}
                 label="Entretiens"
-                value={stats.entretiens || 4}
+                value={entretiensCount}
                 detail="Entretiens programmés"
                 onClick={() => onNavigate?.("candidate-applications")}
                 tone="emerald"
@@ -159,7 +166,7 @@ function CandidateDashboardPage({
               <StatCard
                 icon={<Compass size={20} />}
                 label="Offres recommandées"
-                value={stats.offres_actives || 8}
+                value={recommendedCount}
                 detail="Opportunités correspondant à votre profil"
                 onClick={() => onNavigate?.("candidate-jobs")}
                 tone="violet"
@@ -168,7 +175,7 @@ function CandidateDashboardPage({
               <StatCard
                 icon={<TrendingUp size={20} />}
                 label="Profil complété"
-                value={(user.profil_candidat?.profile_completion || 78) + "%"}
+                value={completionPercent + "%"}
                 detail="Complétez vos compétences"
                 onClick={() => onNavigate?.("candidate-profile")}
                 tone="amber"
@@ -410,7 +417,7 @@ function CandidateDashboardPage({
           </p>
 
           <h3 className="mt-1 text-sm font-black text-slate-900">
-            Profil complété à {user.profil_candidat?.profile_completion || 0} %
+            Profil complété à {completionPercent} %
           </h3>
 
         </div>
@@ -422,7 +429,7 @@ function CandidateDashboardPage({
 
       </div>
 
-      <ProgressBar className="mt-4" value={user.profil_candidat?.profile_completion || 0} label="Complétion du profil" />
+      <ProgressBar className="mt-4" value={completionPercent} label="Complétion du profil" />
 
       <p className="mt-3 text-xs leading-5 text-slate-400">
         Complétez votre profil pour améliorer la pertinence des opportunités proposées.
@@ -526,22 +533,22 @@ function CandidateDashboardPage({
 
                 <ProfileTask
                   label="Informations personnelles"
-                  completed={Boolean(user.firstName && user.email)}
+                  completed={Boolean((user.firstName || candidateProfile?.first_name) && (user.email || candidateProfile?.email))}
                 />
 
                 <ProfileTask
                   label="Compétences"
-                  completed={Boolean(user.profil_candidat?.competences?.length)}
+                  completed={Boolean((candidateProfile?.competences || user.profil_candidat?.competences)?.length)}
                 />
 
                 <ProfileTask
                   label="Expériences professionnelles"
-                  completed={Boolean(user.profil_candidat?.experiences?.length)}
+                  completed={Boolean((candidateProfile?.experiences || user.profil_candidat?.experiences)?.length)}
                 />
 
                 <ProfileTask
                   label="CV principal"
-                  completed={false}
+                  completed={Boolean(cvs?.length > 0)}
                 />
 
               </div>

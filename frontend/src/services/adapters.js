@@ -6,7 +6,42 @@ export function jobAdapter(j) {
   return { ...j, title: j.titre || "", company, companyShort: initials(company), companyInitials: initials(company), logo: initials(company), location: j.localisation || "", type: j.type_contrat_label || j.type_contrat, contract: j.type_contrat_label || j.type_contrat, domain: j.entreprise_secteur || "", sector: j.entreprise_secteur || "", experience: j.niveau_experience_label || "", education: j.niveau_etudes_label || "", diploma: j.diplome_requis || "", salary: j.salaire_confidentiel || !j.salaire_min ? "Selon profil" : j.salaire_min + " – " + (j.salaire_max || "") + " " + j.devise, deadline: j.date_limite, description: j.description || "", missions: (j.missions || "").split("\n").filter(Boolean), requirements: (j.profil_recherche || "").split("\n").filter(Boolean), skills: j.competences || [], benefits: j.avantages || [], applications: j.nombre_candidatures || 0, newApplications: 0, views: j.nombre_vues || 0, status: { PUBLIEE: "active", EXPIREE: "expired", ARCHIVEE: "archived", BROUILLON: "draft", EN_ATTENTE: "pending", REJETEE: "rejected", SUSPENDUE: "suspended" }[j.statut], statusLabel: j.statut_label, validated: j.moderation_status === "APPROUVEE", color: "blue", icon: null, progress: 0, postedAt: dateLabel(j.date_publication), time: dateLabel(j.date_publication), publishedAt: dateLabel(j.date_publication), createdAt: dateLabel(j.created_at) };
 }
 export const jobsAdapter = list => list.map(jobAdapter);
-export function offerPayload(form) { return { titre: form.title, localisation: form.location, type_contrat: form.type.toUpperCase(), niveau_experience: /[2-9]|interm/i.test(form.experience) ? "INTERMEDIAIRE" : /senior/i.test(form.experience) ? "SENIOR" : "DEBUTANT", experience_requise: Number.parseInt(form.experience) || 0, diplome_requis: form.diploma, date_limite: form.deadline, description: form.description, competences: form.skills, salaire_confidentiel: true }; }
+function mapEducationLevel(diploma = "") {
+  const d = (diploma || "").toLowerCase();
+  if (d.includes("doctorat")) return "DOCTORAT";
+  if (d.includes("master") || d.includes("ingénieur") || d.includes("ingenieur") || d.includes("bac+5")) return "BAC+5";
+  if (d.includes("bac+4")) return "BAC+4";
+  if (d.includes("licence") || d.includes("bac+3")) return "BAC+3";
+  if (d.includes("bts") || d.includes("dut") || d.includes("bac+2")) return "BAC+2";
+  if (d.includes("bac") || d.includes("cap") || d.includes("bep")) return "BAC";
+  if (d.includes("probatoire")) return "PROBATOIRE";
+  if (d.includes("bepc")) return "BEPC";
+  return "AUCUN";
+}
+export function offerPayload(form) {
+  const diploma = form.diploma || "Selon profil";
+  const fullDiploma = [form.diploma, form.specialty?.trim()].filter(Boolean).join(" — ") || diploma;
+  const numbers = (form.salary || "").match(/\d[\d\s]*/g)?.map(s => Number.parseInt(s.replace(/\s+/g, ""), 10)) || [];
+  const minSalary = numbers[0] || null;
+  const maxSalary = numbers[1] || numbers[0] || null;
+  const confidentiel = !form.salary || !form.salary.trim() || numbers.length === 0;
+
+  return {
+    titre: (form.title || "").trim(),
+    localisation: (form.location || "").trim(),
+    type_contrat: (form.type || "CDI").toUpperCase(),
+    niveau_experience: /[2-9]|interm/i.test(form.experience) ? "INTERMEDIAIRE" : /senior/i.test(form.experience) ? "SENIOR" : "DEBUTANT",
+    experience_requise: Number.parseInt(form.experience) || 0,
+    niveau_etudes: mapEducationLevel(diploma),
+    diplome_requis: fullDiploma,
+    date_limite: form.deadline,
+    description: (form.description || "").trim(),
+    competences: Array.isArray(form.skills) ? form.skills : [],
+    salaire_confidentiel: confidentiel,
+    ...(minSalary ? { salaire_min: minSalary } : {}),
+    ...(maxSalary ? { salaire_max: maxSalary } : {}),
+  };
+}
 const statusType = { RECUE: "sent", PRESELECTION: "selection", ENTRETIEN: "interview", EVALUATION: "review", RETENU: "accepted", REFUSE: "rejected", RETIREE: "withdrawn" };
 export const statusCode = label => ({ "Candidature reçue": "RECUE", "Présélection": "PRESELECTION", "Entretien": "ENTRETIEN", "Évaluation": "EVALUATION", "Retenu": "RETENU", "Refusé": "REFUSE", "Non retenue": "REFUSE", "Retirée": "RETIREE" }[label] || label);
 export function applicationAdapter(a) {

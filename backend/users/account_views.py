@@ -16,7 +16,7 @@ from rest_framework_simplejwt.token_blacklist.models import OutstandingToken, Bl
 from .models import User
 
 class AuthThrottle(AnonRateThrottle):
-    rate = "10/minute"
+    rate = "100/minute" if getattr(settings, "DEBUG", False) else "15/minute"
     scope = "auth"
 
 def validate_new_password(password, user=None):

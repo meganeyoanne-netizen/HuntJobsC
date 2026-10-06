@@ -24,6 +24,7 @@ function RecruiterJobsPage({
   onNavigate,
   onLogout,
   openPublish = false,
+  jobId = null,
 }) {
 
   const companyName =
@@ -70,17 +71,18 @@ function RecruiterJobsPage({
      FORMULAIRE
   ========================================================= */
 
+  const defaultDeadline = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
   const emptyForm = {
     title: "",
     location: "",
     type: "CDI",
     experience: "Débutant",
     salary: "",
-    diploma: "",
+    diploma: "Baccalauréat",
     specialty: "",
     flyer: null,
     existingFlyer: "",
-    deadline: "",
+    deadline: defaultDeadline,
     description: "",
     skills: [],
   };
@@ -134,6 +136,11 @@ function RecruiterJobsPage({
   const activeJobs =
     jobs.filter(
       (job) => job.status === "active"
+    ).length;
+
+  const pendingJobs =
+    jobs.filter(
+      (job) => job.status === "pending"
     ).length;
 
   const expiredJobs =
@@ -203,6 +210,15 @@ function RecruiterJobsPage({
     setShowJobModal(true);
 
   };
+
+  useEffect(() => {
+    if (jobId && jobs?.length > 0) {
+      const target = jobs.find((j) => String(j.id) === String(jobId));
+      if (target) {
+        openEditModal(target);
+      }
+    }
+  }, [jobId, jobs]);
 
 
   /* =========================================================
@@ -315,25 +331,65 @@ function RecruiterJobsPage({
   const refreshJobs=async()=>setJobs(jobsAdapter(await api("/offres/recruteur/mes-offres/")));
   const handleSubmit = (event) => perform(async () => {
     event.preventDefault();
-    const payload = offerPayload(form);
-    payload.diplome_requis = [form.diploma, form.specialty.trim()].filter(Boolean).join(" — ");
+
+    // Auto-intégration de la compétence si l'utilisateur l'a saisie sans cliquer sur +
+    let currentSkills = [...(form.skills || [])];
+    if (skillInput && skillInput.trim() && !currentSkills.includes(skillInput.trim())) {
+      currentSkills.push(skillInput.trim());
+      updateForm("skills", currentSkills);
+      setSkillInput("");
+    }
+
+    if (!form.title || !form.title.trim()) {
+      report(Error("Veuillez renseigner l'intitulé du poste."));
+      return;
+    }
+    if (!form.location || !form.location.trim()) {
+      report(Error("Veuillez renseigner la localisation."));
+      return;
+    }
+    if (!form.diploma) {
+      report(Error("Veuillez sélectionner un diplôme requis."));
+      return;
+    }
+    if (currentSkills.length === 0) {
+      report(Error("Veuillez ajouter au moins une compétence recherchée (ex. React, Gestion de projet...)."));
+      return;
+    }
+    if (!form.deadline) {
+      report(Error("Veuillez indiquer la date limite de candidature."));
+      return;
+    }
+    const today = new Date().toISOString().slice(0, 10);
+    if (form.deadline < today) {
+      report(Error("La date limite doit être aujourd'hui ou une date future."));
+      return;
+    }
+
+    const payload = offerPayload({ ...form, skills: currentSkills });
     if (editingJob) delete payload.diplome_requis;
     let body = payload;
     if (form.flyer) {
       body = new FormData();
-      Object.entries(payload).forEach(([key, value]) => body.append(key, Array.isArray(value) ? JSON.stringify(value) : String(value)));
+      Object.entries(payload).forEach(([key, value]) => {
+        if (value !== null && value !== undefined) {
+          body.append(key, Array.isArray(value) ? JSON.stringify(value) : String(value));
+        }
+      });
       body.append("flyer", form.flyer);
     }
     if (editingJob) {
       await patch("/offres/recruteur/" + editingJob.id + "/update/", body);
     } else {
       const result = await post("/offres/recruteur/create/", body);
-      const id = result.offre?.id || result.id;
-      await post("/offres/recruteur/" + id + "/submit/", {});
+      const id = result?.offre?.id || result?.id;
+      if (id) {
+        await post("/offres/recruteur/" + id + "/submit/", {});
+      }
     }
     await refreshJobs();
     closeModal();
-    success("Offre enregistrée. Les nouvelles offres attendent la validation administrateur.");
+    success("Offre enregistrée et soumise à la modération avec succès !");
   });
 
 
@@ -470,8 +526,16 @@ function RecruiterJobsPage({
               icon={<BriefcaseBusiness size={22} />}
               label="Offres actives"
               value={activeJobs}
-              detail="Offres actuellement visibles"
+              detail="Offres publiées et visibles"
               color="blue"
+            />
+
+            <StatCard
+              icon={<Clock3 size={22} />}
+              label="En modération"
+              value={pendingJobs}
+              detail="En attente de validation admin"
+              color="orange"
             />
 
             <StatCard
@@ -488,14 +552,6 @@ function RecruiterJobsPage({
               value={totalViews}
               detail="Consultations des offres"
               color="cyan"
-            />
-
-            <StatCard
-              icon={<Clock3 size={22} />}
-              label="Offres expirées"
-              value={expiredJobs}
-              detail="À réactiver si nécessaire"
-              color="orange"
             />
 
           </section>
@@ -589,6 +645,19 @@ function RecruiterJobsPage({
                   onClick={() =>
                     setStatusFilter(
                       "active"
+                    )
+                  }
+                />
+
+                <FilterButton
+                  label="En modération"
+                  active={
+                    statusFilter ===
+                    "pending"
+                  }
+                  onClick={() =>
+                    setStatusFilter(
+                      "pending"
                     )
                   }
                 />
@@ -904,6 +973,9 @@ function JobCard({
               status={
                 job.status
               }
+              label={
+                job.statusLabel
+              }
             />
 
 
@@ -987,7 +1059,11 @@ function JobCard({
 
         <div className="mt-5">
 
-          <h3 className="text-xl font-black tracking-tight text-slate-950">
+          <h3
+            onClick={onEdit}
+            className="cursor-pointer text-xl font-black tracking-tight text-slate-950 transition hover:text-blue-600"
+            title="Cliquer pour voir et modifier les détails de l'offre"
+          >
             {job.title}
           </h3>
 
@@ -1115,7 +1191,7 @@ function JobCard({
 
           <div className="flex items-center gap-2">
 
-            {job.validated && (
+            {job.validated ? (
               <span className="flex items-center gap-1.5 text-xs font-black text-emerald-600">
 
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-100">
@@ -1125,27 +1201,50 @@ function JobCard({
                 Offre validée
 
               </span>
-            )}
+            ) : job.status === "pending" ? (
+              <span className="flex items-center gap-1.5 text-xs font-black text-amber-600">
+
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-amber-100">
+                  <Clock3 size={10} />
+                </span>
+
+                En modération
+
+              </span>
+            ) : null}
 
           </div>
 
 
-          <Button
-            type="button"
-            onClick={
-              onApplications
-            }
-            className="group/button flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-xs font-black text-white transition hover:bg-blue-600"
-          >
+          <div className="flex items-center gap-2">
 
-            Voir les candidatures
+            <Button
+              type="button"
+              onClick={onEdit}
+              className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white/90 px-3 py-2 text-xs font-bold text-slate-700 shadow-sm transition hover:bg-slate-100 hover:text-blue-600"
+            >
+              <Edit3 size={12} />
+              Détails
+            </Button>
 
-            <ArrowRight
-              size={12}
-              className="transition group-hover/button:translate-x-1"
-            />
+            <Button
+              type="button"
+              onClick={
+                onApplications
+              }
+              className="group/button flex items-center gap-2 rounded-xl bg-slate-900 px-3.5 py-2 text-xs font-black text-white transition hover:bg-blue-600"
+            >
 
-          </Button>
+              Candidatures
+
+              <ArrowRight
+                size={12}
+                className="transition group-hover/button:translate-x-1"
+              />
+
+            </Button>
+
+          </div>
 
         </div>
 
@@ -1160,7 +1259,21 @@ function JobCard({
    JOB STATUS
 =========================================================== */
 
-function JobStatus({status}) { const label={active:"Active",expired:"Expirée",archived:"Archivée"}[status]||"Archivée"; return <SharedStatusBadge status={label} />; }
+function JobStatus({ status, label }) {
+  const displayLabel =
+    label ||
+    {
+      active: "Active",
+      pending: "En modération",
+      draft: "Brouillon",
+      expired: "Expirée",
+      archived: "Archivée",
+      rejected: "Rejetée",
+      suspended: "Suspendue",
+    }[status] ||
+    "En modération";
+  return <SharedStatusBadge status={displayLabel} />;
+}
 
 
 /* ===========================================================

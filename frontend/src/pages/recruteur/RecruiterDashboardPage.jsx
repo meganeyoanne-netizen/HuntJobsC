@@ -31,7 +31,7 @@ function RecruiterDashboardPage({
       ? `${user.firstName} ${user.lastName || ""}`.trim()
       : "Recruteur";
 
-  const [animatedStats, setAnimatedStats] = useResource("/dashboard/",d=>({jobs:d.offres_actives,applications:d.candidatures,profiles:d.candidatures,interviews:d.entretiens}),{jobs:0,applications:0,profiles:0,interviews:0});
+  const [animatedStats, setAnimatedStats] = useResource("/dashboard/",d=>({jobs:d?.offres ?? d?.offres_actives ?? 0,activeJobs:d?.offres_actives ?? 0,pendingJobs:d?.offres_en_attente ?? 0,applications:d?.candidatures ?? 0,profiles:d?.candidatures ?? 0,interviews:d?.entretiens ?? 0}),{jobs:0,activeJobs:0,pendingJobs:0,applications:0,profiles:0,interviews:0});
 
   
 
@@ -209,9 +209,15 @@ function RecruiterDashboardPage({
 
             <KpiCard
               icon={<BriefcaseBusiness size={22} />}
-              label="Offres publiées"
-              value={animatedStats.jobs}
-              detail="Offres actuellement actives"
+              label="Offres d'emploi"
+              value={recruitmentJobs.length > 0 ? recruitmentJobs.length : animatedStats.jobs}
+              detail={
+                recruitmentJobs.length > 0
+                  ? `${recruitmentJobs.filter(j => j.status === 'active').length} active(s) · ${recruitmentJobs.filter(j => j.status === 'pending').length} en modération`
+                  : animatedStats.jobs > 0
+                  ? `${animatedStats.activeJobs} active(s) · ${animatedStats.pendingJobs} en modération`
+                  : "Aucune offre publiée"
+              }
               color="blue"
               onClick={() =>
                 onNavigate?.("recruiter-jobs")
@@ -996,9 +1002,25 @@ function RecruitmentJobCard({
 
         <div className="mt-5 flex items-center justify-between">
 
-          <span className="text-xs font-bold text-emerald-600">
-            Offre active
-          </span>
+          {job.status === "pending" ? (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+              En modération
+            </span>
+          ) : job.status === "archived" ? (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1 text-xs font-bold text-slate-600">
+              Archivée
+            </span>
+          ) : job.status === "expired" ? (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-2.5 py-1 text-xs font-bold text-rose-600">
+              Expirée
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Offre active
+            </span>
+          )}
 
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white text-slate-300 shadow-sm transition group-hover:bg-slate-900 group-hover:text-white">
             <ArrowRight size={12} />

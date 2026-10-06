@@ -96,17 +96,37 @@ function App() {
     setUser(userAdapter(current));
   };
   const handleLogin = async credentials => {
-    const response = await post("/users/login/", {email:credentials.email, password:credentials.password});
+    const email = (credentials.email || "").trim();
+    const password = credentials.password || "";
+    const response = await post("/users/login/", { email, password });
     saveSession(response, credentials.rememberMe); authenticated(response);
   };
   const handleRegister = async data => {
-    const company = data.role === "recruiter" && !data.deferCompany ? {nom:data.companyName, email_professionnel:data.companyEmail, telephone:data.companyPhone, nui:data.companyNui, description:data.companyDescription} : undefined;
-    const response = await post("/users/register/", {username:data.email.slice(0,110)+"_"+crypto.randomUUID().slice(0,8), email:data.email, first_name:data.firstName,last_name:data.lastName,telephone:data.phone,role:data.role === "recruiter" ? "RECRUTEUR" : "CANDIDAT",password:data.password,password_confirm:data.confirmPassword,company});
+    const cleanEmail = (data.email || "").trim().toLowerCase();
+    const cleanUsername = cleanEmail.replace(/[^a-zA-Z0-9.@+-]/g, "_").slice(0, 100) + "_" + crypto.randomUUID().slice(0, 8);
+    const company = data.role === "recruiter" && !data.deferCompany ? {
+      nom: data.companyName?.trim() || `Entreprise ${data.firstName}`.trim(),
+      email_professionnel: data.companyEmail?.trim() || cleanEmail,
+      telephone: data.companyPhone?.trim() || data.phone?.trim() || "",
+      nui: data.companyNui?.trim() || "",
+      description: data.companyDescription?.trim() || ""
+    } : undefined;
+    const response = await post("/users/register/", {
+      username: cleanUsername,
+      email: cleanEmail,
+      first_name: data.firstName?.trim() || "",
+      last_name: data.lastName?.trim() || "",
+      telephone: data.phone?.trim() || "",
+      role: data.role === "recruiter" ? "RECRUTEUR" : "CANDIDAT",
+      password: data.password,
+      password_confirm: data.confirmPassword,
+      company
+    });
     saveSession(response);
     if (!data.deferCompany && data.companyDocuments?.length) {
-      const form = new FormData(); form.append("document_immatriculation",data.companyDocuments[0]);
-      if(data.companyDocuments[1]) form.append("preuve_activite",data.companyDocuments[1]);
-      await perform(() => api("/users/recruiter/company/",{method:"PATCH",body:form}));
+      const form = new FormData(); form.append("document_immatriculation", data.companyDocuments[0]);
+      if (data.companyDocuments[1]) form.append("preuve_activite", data.companyDocuments[1]);
+      await perform(() => api("/users/recruiter/company/", { method: "PATCH", body: form }));
     }
     authenticated(response);
   };

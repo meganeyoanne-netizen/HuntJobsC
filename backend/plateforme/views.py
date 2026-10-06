@@ -394,7 +394,11 @@ class DashboardView(APIView):
         else:
             jobs = Offre.objects.filter(statut="PUBLIEE", date_limite__gte=timezone.localdate(), entreprise__is_suspended=False, entreprise__is_active=True)
             interviews = Entretien.objects.filter(candidature__candidat=user)
-        data = {"offres": jobs.count(), "offres_actives": jobs.filter(statut="PUBLIEE").count(), "candidatures": apps.count(), "entretiens": interviews.filter(statut="PLANIFIE").count(), "retenus": apps.filter(statut="RETENU").count(), "notifications": Notification.objects.filter(user=user, is_read=False).count()}
+        data = {"offres": jobs.count(), "offres_actives": jobs.filter(statut="PUBLIEE").count(), "offres_en_attente": jobs.filter(statut="EN_ATTENTE").count(), "candidatures": apps.count(), "entretiens": interviews.filter(statut="PLANIFIE").count(), "retenus": apps.filter(statut="RETENU").count(), "notifications": Notification.objects.filter(user=user, is_read=False).count()}
+        if hasattr(user, "profil_candidat") and user.profil_candidat:
+            data["profile_completion"] = getattr(user.profil_candidat, "profile_completion", 0) or 0
+        else:
+            data["profile_completion"] = 0
         if admin_user(user):
             data.update({"utilisateurs": User.objects.count(), "candidats": User.objects.filter(role="CANDIDAT").count(), "recruteurs": User.objects.filter(role="RECRUTEUR").count(), "entreprises_en_attente": Entreprise.objects.filter(verification_status="PENDING").count(), "offres_en_attente": jobs.filter(statut="EN_ATTENTE").count()})
         return Response(data)
