@@ -31,7 +31,20 @@ function CandidateAIPage({
 
   const [aiResult,setAIResult]=useState(null);
   const [aiLoading,setAILoading]=useState(false);
-  const runAI = (tool,context) => perform(async()=>{const modules={"analyse-offre":"aiOfferAnalysis","simulation-entretien":"aiInterviewSimulation","conseiller-cv":"aiCVAdvisor"};if(!platform.aiEnabled || (modules[tool] && !platform[modules[tool]]))throw Error("Ce module IA est désactivé par l’administrateur.");setAILoading(true);try{const response=await api("/ia/"+tool+"/",{method:"POST",body:context});setActiveModal(null);setAIResult({result:response.resultat,tool,context:context instanceof FormData?{}:context});}finally{setAILoading(false);}});
+  const runAI = (tool,context) => perform(async()=>{
+    const modules={"analyse-offre":"aiOfferAnalysis","simulation-entretien":"aiInterviewSimulation","conseiller-cv":"aiCVAdvisor"};
+    if(!platform.aiEnabled || (modules[tool] && !platform[modules[tool]]))
+      throw Error("Ce module IA est désactivé par l’administrateur.");
+    const safeContext = (context && (context.nativeEvent || context.target || context.currentTarget || typeof context.preventDefault === "function")) ? {} : context;
+    setAILoading(true);
+    try{
+      const response=await api("/ia/"+tool+"/",{method:"POST",body:safeContext});
+      setActiveModal(null);
+      setAIResult({result:response.resultat,tool,context:safeContext instanceof FormData?{}:safeContext});
+    }finally{
+      setAILoading(false);
+    }
+  });
   
 
 
@@ -893,7 +906,15 @@ function CVAdvisorModal({
         <Button
           type="button"
           disabled={!canSubmit}
-          onClick={onSuccess}
+          onClick={() => {
+            if (importedFile) {
+              const context = new FormData();
+              context.append("fichier", importedFile);
+              onSuccess(context);
+            } else if (selectedCV) {
+              onSuccess({ cv: selectedCV });
+            }
+          }}
           className="flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-xs font-black text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-40"
         >
 

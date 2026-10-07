@@ -89,6 +89,9 @@ export async function api(path, options = {}, retry = true) {
 
   if (token) headers.Authorization = "Bearer " + token;
   if (config.body && !(config.body instanceof FormData)) {
+    if (typeof config.body === "object" && (config.body.nativeEvent || config.body.target || config.body.nodeType || config.body.stateNode)) {
+      config.body = {};
+    }
     headers["Content-Type"] = "application/json";
     config.body = JSON.stringify(config.body);
   }
